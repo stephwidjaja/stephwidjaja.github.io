@@ -1,0 +1,2859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephanie Widjaja — Marketing Portfolio</title>
+<meta name="description" content="Graduate student and globally minded marketer blending strategy, storytelling, and cultural intelligence to build campaigns that connect ideas to communities.">
+<meta property="og:title" content="Stephanie Widjaja — Marketing Portfolio">
+<meta property="og:description" content="Globally minded marketer. Brand strategy, storytelling, event marketing.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── Custom Fonts ────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Cavalhatriz';
+  src: url('Cavalhatriz/Cavalhatriz.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Reset ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+/* ─── Stagger entrance ───────────────────────────────────────────────── */
+.si {
+  opacity: 0;
+  translate: 0 55px;
+  transition: opacity 0.6s cubic-bezier(0.34,1.56,0.64,1),
+              translate 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+.si.on { opacity: 1; translate: 0 0; }
+
+/* ─── Tokens ──────────────────────────────────────────────────────────── */
+:root {
+  --bg:        #FAFAF8;
+  --ink:       #1B1713;
+  --accent:    #1A65FF;
+  --muted:     #8C8076;
+  --border:    rgba(27,23,19,0.11);
+  --max:       1120px;
+  --gutter:    clamp(1.25rem, 5vw, 4.5rem);
+  --section-v: clamp(5.5rem, 10vw, 10rem);
+}
+
+/* ─── Page transitions ────────────────────────────────────────────────── */
+
+/* ─── Base ────────────────────────────────────────────────────────────── */
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, auto;
+}
+a, button, [role="button"], .fd-card, .nav-links a {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, pointer;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 { font-family: 'Instrument Serif', serif; line-height: 1.05; font-weight: 400; }
+em { font-style: italic; }
+a  { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+.ruled {
+  border: none;
+  border-top: 1px solid var(--border);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+
+/* ════════════════════════════════════════════════════
+   NAV — floating glass pill
+═══════════════════════════════════════════════════════ */
+#nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: auto;
+  max-width: calc(100vw - 2rem);
+}
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  background: rgba(250,250,248,0.55);
+  backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-bottom-color: rgba(27,23,19,0.08);
+  border-radius: 999px;
+  padding: 0.7rem 2rem;
+  box-shadow: 0 2px 16px rgba(27,23,19,0.07), inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: box-shadow 0.35s, background 0.35s;
+}
+#nav.is-scrolled .nav-pill {
+  background: rgba(250,250,248,0.72);
+  box-shadow: 0 4px 28px rgba(27,23,19,0.11), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.nav-mark {
+  font-family: 'Cavalhatriz', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  color: var(--ink);
+  padding: 0 0.2rem;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex: 1;
+}
+.nav-links:first-child { justify-content: flex-end; }
+.nav-links:last-child  { justify-content: flex-start; }
+.nav-links a {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 1.05rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+
+/* ════════════════════════════════════════════════════
+   HERO — full-viewport, centered image with floating labels
+═══════════════════════════════════════════════════════ */
+#hero {
+  height: 100svh;
+  min-height: 620px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Center image */
+.hero-img-wrap {
+  position: absolute;
+  left: 46%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(320px, 52vw, 720px);
+  z-index: 5;
+}
+.hero-img-wrap img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+/* Floating role labels */
+.hf {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.22rem;
+  opacity: 0;
+  transform: scale(0.2);
+  transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              z-index 0s 0.45s;
+}
+.hf span {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: clamp(0.72rem, 0.95vw, 0.9rem);
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.hf i { font-style: normal; font-size: 0.65rem; color: #FF3FA4; }
+
+.hf--1 { left: 30%;  top: 25%; transition-delay: 0s; }
+.hf--2 { left: 24%;  top: 50%; transition-delay: 0.07s; }
+.hf--3 { left: 64%;  top: 30%; transition-delay: 0.14s; }
+.hf--4 { left: 64%;  top: 49%; transition-delay: 0.21s; }
+.hf--5 { left: 50%;  top: 17%; transition-delay: 0.28s; }
+
+.hero-scene.labels-visible .hf {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+  transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hero-scene.labels-visible .hf--5 {
+  transform: scale(1) translateX(-50%);
+}
+
+/* Left handwritten text */
+.hero-left-text {
+  position: absolute;
+  left: var(--gutter);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.hero-hand {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+/* Right descriptor */
+.hero-right-text {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  max-width: 14ch;
+  z-index: 10;
+}
+.hero-right-text p {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.3;
+  color: var(--ink);
+  text-transform: none;
+}
+
+/* Bottom bar: name + availability */
+.hero-bottom {
+  position: absolute;
+  bottom: clamp(1.5rem, 3.5vh, 2.75rem);
+  left: 51%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 10;
+  white-space: nowrap;
+}
+.hero-name-title {
+  font-family: 'Cavalhatriz', serif;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 4vw, 3.5rem);
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--ink);
+}
+.hero-avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: 'Instrument Serif', serif;
+  font-style: normal;
+  font-size: 1rem;
+  color: var(--muted);
+}
+.hero-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px 2px rgba(34,197,94,0.5);
+  animation: pulse-green 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(34,197,94,0.5); }
+  50%       { box-shadow: 0 0 12px 4px rgba(34,197,94,0.8); }
+}
+
+/* Stats row below hero */
+.hero-stats-wrap {
+  padding: 0 var(--gutter) 2.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  background: var(--border);
+  gap: 1px;
+}
+.stat {
+  background: var(--bg);
+  padding: 1.4rem 1.5rem;
+}
+.stat-n {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.stat-l {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+
+/* ════════════════════════════════════════════════════
+   MARQUEE
+═══════════════════════════════════════════════════════ */
+#marquee {
+  overflow: hidden;
+  background: #fffdac;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.mq-track {
+  display: flex;
+  width: max-content;
+  animation: mq 30s linear infinite;
+}
+.mq-track:hover { animation-play-state: paused; }
+@keyframes mq {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.mq-item {
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 0;
+  white-space: nowrap;
+}
+.mq-text {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  padding: 0 1.5rem;
+}
+.mq-dot { color: #000; font-size: 1.1rem; opacity: 1; }
+
+
+/* ════════════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════════════ */
+#about {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: start;
+  padding-block: var(--section-v);
+}
+
+.about-label { margin-bottom: 2rem; }
+
+.about-prose p {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: clamp(1rem, 1.25vw, 1.08rem);
+  line-height: 1.85;
+  color: #3C3830;
+  margin-bottom: 1.4rem;
+}
+.about-prose p:last-child { margin-bottom: 0; }
+
+.about-prose p:first-child::first-letter {
+  font-family: 'Instrument Serif', serif;
+  font-size: 4.2em;
+  float: left;
+  line-height: 0.78;
+  margin: 0.08em 0.1em 0 0;
+  color: var(--accent);
+}
+
+.facts-label {
+  font-family: 'Instrument Serif', serif;
+  font-style: normal;
+  font-size: 1.3rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--border);
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.fact-k {
+  font-family: 'Instrument Serif', serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.fact-v {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+
+/* ════════════════════════════════════════════════════
+   WORK / FOLDER SYSTEM
+═══════════════════════════════════════════════════════ */
+#work { padding-block: var(--section-v); }
+
+.section-hd {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+.section-label {
+  font-family: 'Instrument Serif', serif;
+  font-style: normal;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  letter-spacing: -0.02em;
+}
+
+/* breadcrumb */
+.fd-crumb {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.25rem;
+  list-style: none;
+}
+.fd-crumb--visible { display: flex; }
+.fd-crumb-back {
+  background: none;
+  border: none;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+.fd-crumb-back:hover { opacity: 0.7; }
+.fd-crumb-sep { color: var(--border); font-size: 0.8rem; }
+.fd-crumb-name {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* folder grid */
+.fd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+  gap: 2.75rem 2.25rem;
+  justify-content: center;
+}
+.fd-grid--hidden { display: none !important; }
+.fd-grid.fd-in {
+  animation: fdIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes fdIn {
+  from { opacity: 0; translate: 0 18px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* single folder card */
+.fd-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  outline: none;
+}
+.fd-card:hover  .fd-visual { transform: translateY(-7px); }
+.fd-card:active .fd-visual { transform: translateY(-2px) scale(0.96); }
+
+.fd-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 0.87;
+  transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* peeking photos / tiles */
+.fd-peek {
+  position: absolute;
+  top: 2%;
+  left: 8%; right: 8%;
+  height: 64%;
+  z-index: 1;
+}
+.fd-peek-img,
+.fd-peek-tile {
+  position: absolute;
+  top: 0;
+  width: 52%;
+  height: 100%;
+  border-radius: 7px;
+  box-shadow: 0 3px 12px rgba(27,23,19,0.18);
+  object-fit: cover;
+  transform: rotate(var(--r, 0deg));
+}
+.fd-peek-tile { background: var(--c, #ddd); }
+.fd-peek :nth-child(1) { left: 4%;  z-index: 1; }
+.fd-peek :nth-child(2) { left: 26%; z-index: 3; }
+.fd-peek :nth-child(3) { left: 46%; z-index: 2; }
+
+/* folder body */
+.fd-body {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 70%;
+  background: linear-gradient(155deg, rgba(243,241,237,0.98) 0%, rgba(228,226,220,0.98) 100%);
+  border-radius: 13px;
+  z-index: 2;
+  overflow: visible;
+  box-shadow:
+    0 10px 32px rgba(27,23,19,0.12),
+    0 2px 6px rgba(27,23,19,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.82);
+  display: flex;
+  align-items: flex-end;
+  padding: 13px 15px;
+}
+.fd-tab {
+  position: absolute;
+  top: -14px; left: 0;
+  width: 40%; height: 17px;
+  background: linear-gradient(155deg, rgba(243,241,237,0.98) 0%, rgba(228,226,220,0.98) 100%);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 -2px 5px rgba(27,23,19,0.05);
+}
+.fd-stickers {
+  font-size: 1.35rem;
+  line-height: 1;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.18));
+}
+.fd-name {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: center;
+}
+.fd-sub {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* case overlay */
+.fd-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  background: rgba(27,23,19,0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.fd-overlay--open {
+  opacity: 1;
+  pointer-events: all;
+}
+.fd-overlay-card {
+  background: var(--bg);
+  border-radius: 20px;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  max-width: 540px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 28px 70px rgba(27,23,19,0.22);
+  max-height: 86vh;
+  overflow-y: auto;
+  transform: translateY(22px) scale(0.96);
+  transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1);
+}
+.fd-overlay--open .fd-overlay-card {
+  transform: translateY(0) scale(1);
+}
+.fd-overlay-close {
+  position: absolute;
+  top: 1.1rem; right: 1.1rem;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(27,23,19,0.08);
+  font-size: 1rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s;
+  line-height: 1;
+}
+.fd-overlay-close:hover { background: rgba(27,23,19,0.15); }
+
+/* editorial project/case cards */
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.cs-grid.fd-in {
+  animation: fdIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.cs-card {
+  border-radius: 18px;
+  background: var(--bg);
+  box-shadow: 0 2px 16px rgba(27,23,19,0.08), 0 0 0 1px rgba(27,23,19,0.05);
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+}
+.cs-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(27,23,19,0.13), 0 0 0 1px rgba(27,23,19,0.05);
+}
+.cs-card:active { transform: translateY(-2px) scale(0.98); }
+.cs-img {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, var(--cs-c1, #e0ddd8) 0%, var(--cs-c2, #c8c4be) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.cs-img-icon {
+  font-size: 5rem;
+  opacity: 0.45;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.1));
+}
+.cs-body {
+  padding: 1.1rem 1.3rem 1.4rem;
+}
+.cs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+}
+.cs-tag {
+  border: 1px solid rgba(27,23,19,0.18);
+  border-radius: 999px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.64rem;
+  letter-spacing: 0.02em;
+  color: #4A4540;
+  padding: 0.18rem 0.65rem;
+  white-space: nowrap;
+}
+.cs-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.45rem;
+}
+.cs-desc {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.82rem;
+  color: #4A4540;
+  line-height: 1.65;
+}
+
+/* ── PROJECT CAROUSEL ── */
+.proj-carousel {
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+}
+.proj-carousel-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.proj-carousel-hd .section-hd { margin: 0; }
+.proj-arrows {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.proj-arrow {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  color: var(--ink);
+  box-shadow: 0 1px 4px rgba(27,23,19,0.07);
+}
+.proj-arrow:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.proj-arrow:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+.proj-viewport {
+  overflow: hidden;
+}
+.proj-track {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.proj-track .cs-card {
+  flex: 0 0 calc((100% - 3rem) / 3);
+  min-width: 260px;
+}
+
+.fdo-eyebrow {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+.fdo-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.7rem;
+}
+.fdo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+.fdo-meta-label {
+  display: block;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.fdo-meta-val {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.84rem;
+  color: var(--ink);
+}
+.fdo-stat {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+.fdo-stat-n {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--accent);
+  line-height: 1;
+}
+.fdo-stat-l {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1rem;
+  color: var(--muted);
+}
+.fdo-body {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.9rem;
+  color: #3C3830;
+  line-height: 1.8;
+}
+
+/* rich overlay — case study */
+.fd-overlay-card--wide { max-width: 720px; }
+.fdo-hero {
+  width: 100%; border-radius: 10px; margin: 1rem 0 1.5rem;
+  display: block; object-fit: cover;
+}
+.fdo-section-heading {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.15rem; color: var(--ink);
+  margin: 2rem 0 0.75rem;
+  padding-top: 1.5rem; border-top: 1px solid var(--border);
+}
+.fdo-finding {
+  background: rgba(27,23,19,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.15rem 1.1rem;
+  margin: 0.85rem 0;
+}
+.fdo-finding-badge {
+  display: inline-block;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.18rem 0.65rem; border-radius: 999px; margin-bottom: 0.5rem;
+}
+.fdo-finding-badge--critical { background: #FAE8DE; color: #A84820; }
+.fdo-finding-badge--moderate { background: #FDF0D0; color: #7A5818; }
+.fdo-finding-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 0.98rem; color: var(--ink); line-height: 1.25; margin-bottom: 0.55rem;
+}
+.fdo-finding-img {
+  width: 100%; border-radius: 7px; display: block; margin: 0.5rem 0 0.7rem;
+  object-fit: cover; max-height: 220px;
+}
+.fdo-quote {
+  border-left: 2px solid var(--accent);
+  padding: 0.3rem 0.75rem; margin: 0.6rem 0;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic; font-size: 0.9rem; color: var(--ink); line-height: 1.5;
+}
+.fdo-quote cite {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.6rem; color: var(--muted);
+  font-style: normal; display: block; margin-top: 0.2rem;
+}
+.fdo-rec-list {
+  list-style: none; margin: 0.55rem 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.fdo-rec-list li {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.78rem; color: #3C3830; line-height: 1.6;
+  padding-left: 1rem; position: relative;
+}
+.fdo-rec-list li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent); font-size: 0.72rem;
+}
+.proj-aside {
+  margin-top: 2.5rem; padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;
+}
+.proj-aside-label {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.7rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted); white-space: nowrap; padding-top: 0.2rem; min-width: 120px;
+}
+.proj-aside-content { flex: 1; min-width: 220px; }
+.proj-aside-title {
+  font-family: 'Instrument Serif', serif; font-size: 1.05rem; margin-bottom: 0.35rem;
+}
+.proj-aside-meta {
+  font-size: 0.75rem; color: var(--muted); margin-bottom: 0.6rem;
+}
+.proj-aside-body { font-size: 0.9rem; line-height: 1.65; color: var(--ink); }
+.fdo-slides { position: relative; margin: 1.5rem 0; user-select: none; }
+.fdo-slides-track { overflow: hidden; border-radius: 10px; background: #f4f4f2; }
+.fdo-slides-track img { width: 100%; display: block; }
+.fdo-slides-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 0.6rem; gap: 0.5rem; }
+.fdo-slides-btn { background: none; border: 1px solid var(--border); border-radius: 999px; width: 2rem; height: 2rem; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s; }
+.fdo-slides-btn:hover { background: var(--ink); color: var(--bg); }
+.fdo-slides-counter { font-family: 'Inter Tight', sans-serif; font-size: 0.75rem; color: var(--muted); flex: 1; text-align: center; }
+.hcbu-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0.75rem; }
+.hcbu-tab { font-family: 'Inter Tight', sans-serif; font-size: 0.75rem; padding: 0.4rem 0.9rem; border: 1px solid var(--border); border-radius: 999px; cursor: pointer; background: none; color: var(--muted); transition: all 0.15s; }
+.hcbu-tab.active, .hcbu-tab:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.hcbu-iframe-wrap { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.hcbu-iframe-wrap iframe { width: 100%; height: 520px; display: block; border: none; }
+.fdo-ext-link {
+  display: inline-block; margin-top: 1.5rem;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.82rem; color: var(--accent);
+  border-bottom: 1px solid rgba(26,101,255,0.3);
+  padding-bottom: 0.1rem; transition: border-color 0.18s;
+}
+.fdo-ext-link:hover { border-color: var(--accent); }
+
+
+/* ════════════════════════════════════════════════════
+   EXPERIENCE
+═══════════════════════════════════════════════════════ */
+#experience { padding-block: var(--section-v); }
+
+/* ── TIMELINE ── */
+.tl-outer {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+  padding-bottom: 1rem;
+}
+.tl-row {
+  display: flex;
+  min-width: 760px;
+  position: relative;
+}
+.tl-row::before {
+  content: '';
+  position: absolute;
+  left: calc(100% / 12); right: 20px;
+  top: 180px;
+  height: 1px;
+  background: var(--ink);
+  z-index: 0;
+}
+.tl-row::after {
+  content: '→';
+  position: absolute;
+  right: 0; top: 180px;
+  transform: translateY(-50%);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 1.1rem; line-height: 1;
+  color: var(--ink);
+}
+.tl-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.5rem;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.tl-above {
+  height: 180px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+.tl-col--above .tl-above::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 20px;
+  border-left: 1px dashed rgba(27,23,19,0.35);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.tl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1.5px var(--ink);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  margin: -5px 0;
+}
+.tl-below {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+.tl-col--below .tl-below::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 20px;
+  border-left: 1px dashed rgba(27,23,19,0.35);
+  flex-shrink: 0;
+  margin-bottom: 5px;
+  align-self: center;
+}
+.tl-date {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.tl-badge {
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  text-align: center;
+}
+.tl-badge--rust,
+.tl-badge--amber,
+.tl-badge--sage  { background: #FF4F87; }
+.tl-b-role {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.05rem;
+  color: #fff;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.tl-b-org {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.35;
+}
+.tl-dn-role {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0;
+}
+.tl-dn-org {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.2rem 0 0.5rem;
+}
+.tl-dn-bullets {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.tl-dn-bullets li {
+  font-family: 'Garet', sans-serif;
+  font-size: 0.7rem;
+  color: #4A4540;
+  line-height: 1.5;
+  padding-left: 0.7rem;
+  position: relative;
+}
+.tl-dn-bullets li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: rgba(27,23,19,0.3);
+}
+
+
+/* ════════════════════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════════════════════ */
+#skills { padding-block: var(--section-v); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+}
+.skill-col-title {
+  font-family: 'Instrument Serif', serif;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: var(--muted);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.pill {
+  display: inline-block;
+  padding: 0.28rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: #4A4540;
+  cursor: default;
+  transition: background 0.16s, color 0.16s, border-color 0.16s;
+  line-height: 1.5;
+}
+.pill:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+
+/* ════════════════════════════════════════════════════
+   CONTACT / FOOTER
+═══════════════════════════════════════════════════════ */
+#contact {
+  background: var(--bg);
+  padding: clamp(2rem, 4vw, 4rem) var(--gutter) clamp(1.5rem, 3vw, 3rem);
+}
+
+.contact-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  background: #fffdac;
+  border-radius: 1.5rem;
+  padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem) clamp(2rem, 3vw, 3rem);
+}
+
+/* ── Top row: headline + CTA ── */
+.contact-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+  flex-wrap: wrap;
+}
+
+.contact-h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 8vw, 8.5rem);
+  letter-spacing: -0.03em;
+  line-height: 0.93;
+  color: var(--ink);
+}
+.contact-h2 em { color: rgba(27,23,19,0.4); font-style: italic; }
+
+.contact-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.contact-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Garet', sans-serif;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  color: var(--ink);
+  border: 1px solid rgba(27,23,19,0.3);
+  border-radius: 999px;
+  padding: 0.65rem 1.4rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.contact-email-btn:hover { background: var(--ink); color: #fffdac; border-color: var(--ink); }
+
+.contact-li-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid rgba(27,23,19,0.3);
+  border-radius: 50%;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.contact-li-btn:hover { background: var(--ink); color: #fffdac; border-color: var(--ink); }
+
+/* ── Bottom bar ── */
+.contact-bar {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: end;
+  gap: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(27,23,19,0.15);
+}
+
+.contact-brand-mark {
+  font-family: 'Cavalhatriz', serif;
+  font-size: 1.6rem;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.contact-brand-name {
+  font-family: 'Garet', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(27,23,19,0.6);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.contact-brand-loc {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(27,23,19,0.4);
+}
+
+.contact-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: flex-start;
+}
+.contact-nav a {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(27,23,19,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-nav a:hover { color: var(--ink); }
+
+.contact-copy {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.68rem;
+  color: rgba(27,23,19,0.3);
+  text-align: right;
+  align-self: end;
+}
+
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 800px) {
+  #about { grid-template-columns: 1fr; }
+  .facts-label { padding-top: 2.5rem; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .fd-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 200px)); gap: 2rem 1.5rem; }
+  .hf--2, .hf--3 { display: none; }
+  .hero-right-text { display: none; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .skills-grid { grid-template-columns: 1fr; }
+  .section-hd { flex-direction: column; gap: 0.5rem; }
+  .hf { display: none; }
+  .hero-left-text { top: 30%; transform: none; }
+  .contact-top { flex-direction: column; align-items: flex-start; }
+  .contact-cta-wrap { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+  .contact-bar { grid-template-columns: 1fr; gap: 1.5rem; }
+  .contact-copy { text-align: left; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav id="nav" class="si" role="navigation" aria-label="Main navigation">
+  <div class="nav-pill">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="#work">Work</a></li>
+    </ul>
+    <a href="#hero" class="nav-mark">SW</a>
+    <ul class="nav-links">
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════ HERO ══════════════════════ -->
+<section id="hero">
+  <div class="hero-scene">
+
+    <!-- Floating role labels -->
+    <div class="hf hf--1"><span>Brand Strategist</span><i>★</i></div>
+    <div class="hf hf--2"><span>Storyteller</span><i>★</i></div>
+    <div class="hf hf--3"><span>Amateur Sudoku Player</span><i>★</i></div>
+    <div class="hf hf--4"><span>Foodie (@tastebudsarchive on ig)</span><i>★</i></div>
+    <div class="hf hf--5"><span>Globally Minded Marketer</span><i>★</i></div>
+
+    <!-- Left handwritten text -->
+    <div class="hero-left-text si">
+      <p class="hero-hand">Hi! I'm a...</p>
+    </div>
+
+    <!-- Center image -->
+    <div class="hero-img-wrap si">
+      <img src="heroimageportofolio.png" alt="Stephanie Widjaja"
+           onerror="this.style.opacity='0'">
+    </div>
+
+    <!-- Right descriptor -->
+    <div class="hero-right-text si">
+      <p>Based in<br>Boston, MA</p>
+    </div>
+
+    <!-- Bottom: name + availability -->
+    <div class="hero-bottom si">
+      <h1 class="hero-name-title">Stephanie Widjaja</h1>
+      <div class="hero-avail" aria-label="Available for new opportunities">
+        <span class="hero-dot" aria-hidden="true"></span>
+        Available for opportunities
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Stats row -->
+
+
+
+
+<!-- ═══════════════════════ MARQUEE ═══════════════════ -->
+<div id="marquee" class="si" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item"><span class="mq-text">Brand Strategy</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Storytelling</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Event Marketing</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Digital Campaigns</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Cultural Intelligence</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Content Creation</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">KOL &amp; Influencer</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Consumer Research</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Brand Strategy</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Storytelling</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Event Marketing</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Digital Campaigns</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Cultural Intelligence</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Content Creation</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">KOL &amp; Influencer</span><span class="mq-dot">◆</span></span>
+    <span class="mq-item"><span class="mq-text">Consumer Research</span><span class="mq-dot">◆</span></span>
+  </div>
+</div>
+
+
+
+
+<!-- ═══════════════════════ ABOUT ═════════════════════ -->
+
+
+
+<!-- ═══════════════════════ WORK ══════════════════════ -->
+<section id="work" class="wrap">
+
+  <div class="section-hd">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Selected Work</h2>
+  </div>
+
+  <!-- breadcrumb -->
+  <nav class="fd-crumb" id="fdCrumb" aria-label="Work folder navigation">
+    <button class="fd-crumb-back" id="fdBack">← All Work</button>
+    <span class="fd-crumb-sep" aria-hidden="true">/</span>
+    <span class="fd-crumb-name" id="fdCrumbName"></span>
+  </nav>
+
+  <!-- Level 0: top-level org folders -->
+  <div class="fd-grid" id="fdTop">
+
+    <div class="fd-card" data-fd-action="drill" data-fd-target="fdBibit" data-fd-label="Bibit.ID" role="button" tabindex="0" aria-label="Open Bibit.ID campaigns">
+      <div class="fd-visual">
+        <div class="fd-peek">
+          <div class="fd-peek-tile" style="--c:#C8E8A0; --r:-11deg"></div>
+          <div class="fd-peek-tile" style="--c:#A0D068; --r:-1deg"></div>
+          <div class="fd-peek-tile" style="--c:#7CB840; --r:10deg"></div>
+        </div>
+        <div class="fd-body">
+          <div class="fd-tab"></div>
+          <div class="fd-stickers">🇮🇩 🌿</div>
+        </div>
+      </div>
+      <p class="fd-name">Bibit.ID</p>
+      <p class="fd-sub">4 campaigns</p>
+    </div>
+
+    <div class="fd-card" data-fd-action="link" data-fd-href="bussa.html" role="button" tabindex="0" aria-label="Open Boston University Singapore Student Association design work">
+      <div class="fd-visual">
+        <div class="fd-peek">
+          <img class="fd-peek-img" src="BUSSA/BUSSA%20ATS%20IG.jpg" alt="" style="--r:-11deg">
+          <img class="fd-peek-img" src="BUSSA/BUSSA%20CNY%20Dinner%20(2).jpg" alt="" style="--r:-1deg">
+          <img class="fd-peek-img" src="BUSSA/BUSSA_SPLASH2.0%20(2).png" alt="" style="--r:9deg">
+        </div>
+        <div class="fd-body">
+          <div class="fd-tab"></div>
+          <div class="fd-stickers">🇸🇬 🦁</div>
+        </div>
+      </div>
+      <p class="fd-name">Boston University Singapore Student Association</p>
+      <p class="fd-sub">6 designs</p>
+    </div>
+
+    <div class="fd-card" data-fd-action="case" data-fd-case="hercampus" role="button" tabindex="0" aria-label="Open HerCampus Boston University">
+      <div class="fd-visual">
+        <div class="fd-peek">
+          <div class="fd-peek-tile" style="--c:#FADADD; --r:-10deg"></div>
+          <div class="fd-peek-tile" style="--c:#F7B8C0; --r:1deg"></div>
+          <div class="fd-peek-tile" style="--c:#F090A0; --r:9deg"></div>
+        </div>
+        <div class="fd-body">
+          <div class="fd-tab"></div>
+          <div class="fd-stickers">📝 💗</div>
+        </div>
+      </div>
+      <p class="fd-name">HerCampus Boston University</p>
+      <p class="fd-sub">Content &amp; writing</p>
+    </div>
+
+    <div class="fd-card" data-fd-action="link" data-fd-href="suns.html" role="button" tabindex="0" aria-label="Open Sydney University Nutrition Society design work">
+      <div class="fd-visual">
+        <div class="fd-peek">
+          <img class="fd-peek-img" src="suns/bowling.png" alt="" style="--r:-11deg">
+          <img class="fd-peek-img" src="suns/oweek-1.png" alt="" style="--r:-1deg">
+          <img class="fd-peek-img" src="suns/yoga.png" alt="" style="--r:9deg">
+        </div>
+        <div class="fd-body">
+          <div class="fd-tab"></div>
+        </div>
+      </div>
+      <p class="fd-name">Sydney University Nutrition Society</p>
+      <p class="fd-sub">Social &amp; events</p>
+    </div>
+
+    <div class="fd-card" data-fd-action="link" data-fd-href="rotary.html" role="button" tabindex="0" aria-label="Open Rotary International">
+      <div class="fd-visual">
+        <div class="fd-peek">
+          <div class="fd-peek-tile" style="--c:#FFF0C0; --r:-10deg"></div>
+          <div class="fd-peek-tile" style="--c:#FFDC78; --r:0deg"></div>
+          <div class="fd-peek-tile" style="--c:#F5C030; --r:9deg"></div>
+        </div>
+        <div class="fd-body">
+          <div class="fd-tab"></div>
+          <div class="fd-stickers">🌍 ⚙️</div>
+        </div>
+      </div>
+      <p class="fd-name">Rotary International</p>
+      <p class="fd-sub">Strategy &amp; research</p>
+    </div>
+
+  </div>
+
+  <!-- Level 1: Bibit sub-campaigns -->
+  <div class="cs-grid fd-grid--hidden" id="fdBibit">
+
+    <div class="cs-card" data-fd-action="case" data-fd-case="bibit-art" role="button" tabindex="0" aria-label="Open Art Jakarta 2024">
+      <div class="cs-img" style="--cs-c1:#F5E2B8; --cs-c2:#E8B84C;">
+        <img src="bibit/artjak-announce.jpg" alt="Art Jakarta 2024 — Consistency Builds Wealth" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="cs-body">
+        <div class="cs-tags">
+          <span class="cs-tag">Content Campaign</span>
+          <span class="cs-tag">Social Media</span>
+          <span class="cs-tag">2024</span>
+        </div>
+        <h3 class="cs-title">Art Jakarta 2024</h3>
+        <p class="cs-desc">Multi-week editorial content calendar for Jakarta's premier contemporary art fair, connecting the Bibit brand to a culturally engaged audience.</p>
+      </div>
+    </div>
+
+    <div class="cs-card" data-fd-action="case" data-fd-case="bibit-padel" role="button" tabindex="0" aria-label="Open Bibit Padel Tournament">
+      <div class="cs-img" style="--cs-c1:#C0EDD0; --cs-c2:#68C48C;">
+        <img src="bibit/padel-kv.png" alt="Bibit Stockbit Open padel tournament" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="cs-body">
+        <div class="cs-tags">
+          <span class="cs-tag">Event Logistics</span>
+          <span class="cs-tag">Community</span>
+          <span class="cs-tag">2024</span>
+        </div>
+        <h3 class="cs-title">Bibit Padel Tournament</h3>
+        <p class="cs-desc">End-to-end logistics for a community lifestyle tournament — vendor coordination, scheduling, and seamless day-of execution.</p>
+      </div>
+    </div>
+
+    <div class="cs-card" data-fd-action="case" data-fd-case="bibit-mine" role="button" tabindex="0" aria-label="Open Bibit x Mine Perfumery">
+      <div class="cs-img" style="--cs-c1:#F8D0E4; --cs-c2:#E888B4;">
+        <img src="bibit/mine-banner.png" alt="Bibit x Mine Perfumery campaign" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="cs-body">
+        <div class="cs-tags">
+          <span class="cs-tag">KOL Strategy</span>
+          <span class="cs-tag">Brand Collab</span>
+          <span class="cs-tag">2024</span>
+        </div>
+        <h3 class="cs-title">Bibit × Mine Perfumery</h3>
+        <p class="cs-desc">Creative asset production and KOL gifting strategy across 10+ key opinion leaders for a brand collaboration launch.</p>
+      </div>
+    </div>
+
+    <div class="cs-card" data-fd-action="case" data-fd-case="bibit-pilates" role="button" tabindex="0" aria-label="Open Bibit Pilates Social">
+      <div class="cs-img" style="--cs-c1:#C8E4F8; --cs-c2:#6CAEE0;">
+        <img src="bibit/pilates-cover-1.png" alt="Exclusive Pilates Social intro deck cover" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="cs-body">
+        <div class="cs-tags">
+          <span class="cs-tag">Event Campaign</span>
+          <span class="cs-tag">Social</span>
+          <span class="cs-tag">2024</span>
+        </div>
+        <h3 class="cs-title">Bibit Pilates Social</h3>
+        <p class="cs-desc">Targeted social and email campaign driving registrations through fitness influencer partnerships and community outreach.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Case study overlay -->
+  <div class="fd-overlay" id="fdOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="fd-overlay-card">
+      <button class="fd-overlay-close" id="fdOverlayClose" aria-label="Close">×</button>
+      <div id="fdOverlayContent"></div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+<!-- ═══════════════════════ PROJECTS ═════════════════ -->
+<section id="projects" class="wrap">
+
+  <div class="proj-carousel">
+
+    <div class="proj-carousel-hd">
+      <div class="section-hd" style="margin:0;">
+        <p class="section-label">Personal &amp; Academic</p>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <div class="proj-arrows">
+        <button class="proj-arrow" id="projPrev" aria-label="Previous projects">&#8592;</button>
+        <button class="proj-arrow" id="projNext" aria-label="Next projects">&#8594;</button>
+      </div>
+    </div>
+
+    <div class="proj-viewport">
+      <div class="proj-track" id="projTrack">
+
+        <div class="cs-card" data-fd-action="case" data-fd-case="proj-build" role="button" tabindex="0" aria-label="Open Build Fellowship UX project">
+          <div class="cs-img" style="--cs-c1:#E0D8FC; --cs-c2:#9070E0;">
+            <img src="https://stephwidjaja.github.io/zara-case-study/assets/hero.png" alt="Zara editorial homepage" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="cs-body">
+            <div class="cs-tags">
+              <span class="cs-tag">UX Research</span>
+              <span class="cs-tag">Heuristic Evaluation</span>
+              <span class="cs-tag">2026</span>
+            </div>
+            <h3 class="cs-title">Improving UX of Digital Products</h3>
+            <p class="cs-desc">Heuristic evaluation and usability testing of the Zara website, synthesized into prioritized, actionable recommendations for stakeholders.</p>
+          </div>
+        </div>
+
+        <div class="cs-card" data-fd-action="case" data-fd-case="proj-food" role="button" tabindex="0" aria-label="Open Food Product Development project">
+          <div class="cs-img" style="--cs-c1:#FFE4C0; --cs-c2:#F09040;">
+            <img src="dimnpeh-bag.png" alt="D!MNPEH tempeh chips bag mockup" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="cs-body">
+            <div class="cs-tags">
+              <span class="cs-tag">Product Development</span>
+              <span class="cs-tag">Market Research</span>
+            </div>
+            <h3 class="cs-title">Food Product Development</h3>
+            <p class="cs-desc">Cross-disciplinary development of a healthier tempeh chip snack, with market research and branded product mockups aligned to consumer insights.</p>
+          </div>
+        </div>
+
+        <div class="cs-card" data-fd-action="case" data-fd-case="proj-metabolic" role="button" tabindex="0" aria-label="Open Metabolic Cybernetics Research project">
+          <div class="cs-img" style="--cs-c1:#C0DCF8; --cs-c2:#4888C8;">
+            <img src="metabolics/slide-01.png" alt="Metabolic Cybernetics presentation title slide" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="cs-body">
+            <div class="cs-tags">
+              <span class="cs-tag">Research</span>
+              <span class="cs-tag">Data Analysis</span>
+              <span class="cs-tag">2023</span>
+            </div>
+            <h3 class="cs-title">Metabolic Cybernetics Research</h3>
+            <p class="cs-desc">Literature review and multivariable data analysis on obesity as a global health challenge, integrating nutrition, computer science, and data science perspectives.</p>
+          </div>
+        </div>
+
+        <div class="cs-card" data-fd-action="case" data-fd-case="proj-hite" role="button" tabindex="0" aria-label="Open Hite Kwang Jang project">
+          <div class="cs-img" style="--cs-c1:#FFD8D0; --cs-c2:#E04030;">
+            <img src="hite%20kwang%20jang/slide-01.png" alt="Hite Kwang Jang Brewery" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="cs-body">
+            <div class="cs-tags">
+              <span class="cs-tag">Market Entry</span>
+              <span class="cs-tag">Business Strategy</span>
+              <span class="cs-tag">2024</span>
+            </div>
+            <h3 class="cs-title">Hite Kwang Jang Brewery</h3>
+            <p class="cs-desc">Market entry strategy and business simulation advising a Korean restaurant on whether to open a microbrewery in LA's Koreatown — covering location analysis, competitive landscape, and marketing budget allocation.</p>
+          </div>
+        </div>
+
+        <div class="cs-card" data-fd-action="case" data-fd-case="proj-ba" role="button" tabindex="0" aria-label="Open British Airways project">
+          <div class="cs-img" style="--cs-c1:#E8EEF8; --cs-c2:#1A3080;">
+            <img src="british%20airways/page-01.png" alt="British Airways — BA Better World" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="cs-body">
+            <div class="cs-tags">
+              <span class="cs-tag">Brand Strategy</span>
+              <span class="cs-tag">Sustainability</span>
+              <span class="cs-tag">2024</span>
+            </div>
+            <h3 class="cs-title">British Airways × RHS</h3>
+            <p class="cs-desc">Partnership proposal connecting British Airways' BA Better World sustainability goals with the Royal Horticultural Society — outlining a 5-year collaboration strategy, marketing approach, and goal alignment.</p>
+          </div>
+        </div>
+
+        <div class="cs-card" data-fd-action="case" data-fd-case="proj-hunger" role="button" tabindex="0" aria-label="Open Hunger Fighters project">
+          <div class="cs-img" style="--cs-c1:#E8F4E8; --cs-c2:#3A8A3A;">
+            <img src="hunger%20fighters/slide-01.png" alt="Hunger Fighters" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="cs-body">
+            <div class="cs-tags">
+              <span class="cs-tag">Product Management</span>
+              <span class="cs-tag">Social Impact</span>
+              <span class="cs-tag">2025</span>
+            </div>
+            <h3 class="cs-title">Hunger Fighters</h3>
+            <p class="cs-desc">End-to-end project plan for a peer-to-peer food rescue app connecting restaurants and grocery stores with food banks — from scope and WBS to risk register, budget baseline, and app mockup.</p>
+          </div>
+        </div>
+
+        <div class="cs-card" data-fd-action="case" data-fd-case="proj-fuelwise" role="button" tabindex="0" aria-label="Open FuelWise project">
+          <div class="cs-img" style="--cs-c1:#E4F4E0; --cs-c2:#3A8A50;">
+            <img src="fuelwise/logo.png" alt="FuelWise" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="cs-body">
+            <div class="cs-tags">
+              <span class="cs-tag">Product Strategy</span>
+              <span class="cs-tag">Marketing</span>
+              <span class="cs-tag">2025</span>
+            </div>
+            <h3 class="cs-title">FuelWise</h3>
+            <p class="cs-desc">Product concept and go-to-market strategy for a personalized nutrition app targeting health-conscious and health-optimizing individuals — including customer profiling, NPS testing, and competitive gap analysis.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+
+<!-- ═══════════════════════ VOLUNTEERING ═════════════ -->
+<section id="volunteering" class="wrap">
+
+  <div class="section-hd">
+    <p class="section-label">Community</p>
+    <h2 class="section-title">Volunteering</h2>
+  </div>
+
+  <div class="cs-grid">
+
+    <div class="cs-card" data-fd-action="case" data-fd-case="proj-honduras" role="button" tabindex="0" aria-label="Open Project Honduras">
+      <div class="cs-img" style="--cs-c1:#C8D8E8; --cs-c2:#6090B8;">
+        <img src="honduras/cover.png" alt="Project Honduras — Your Contribution, Many Solutions" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+      </div>
+      <div class="cs-body">
+        <div class="cs-tags">
+          <span class="cs-tag">Fundraising</span>
+          <span class="cs-tag">Multi-channel</span>
+          <span class="cs-tag">2020–2021</span>
+        </div>
+        <h3 class="cs-title">Project Honduras</h3>
+        <p class="cs-desc">Multi-channel fundraising campaign — video, email, social, and donation drives — raising funds for Project Restore Honduras in partnership with a Honduras-based GIN club.</p>
+      </div>
+    </div>
+
+    <div class="cs-card" data-fd-action="case" data-fd-case="proj-ecobricks" role="button" tabindex="0" aria-label="Open Eco-Bricks project">
+      <div class="cs-img" style="--cs-c1:#C8ECC0; --cs-c2:#5CB84C;">
+        <img src="ecobricks/about.png" alt="All About Eco Bricks — KAS GIN 2020" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      </div>
+      <div class="cs-body">
+        <div class="cs-tags">
+          <span class="cs-tag">Sustainability</span>
+          <span class="cs-tag">Community</span>
+          <span class="cs-tag">2020</span>
+        </div>
+        <h3 class="cs-title">Eco-Bricks Community Workshop</h3>
+        <p class="cs-desc">Community sustainability workshop converting unrecyclable plastic into ecobricks — ~50 donated to Taiwanderful's environmental programs.</p>
+      </div>
+    </div>
+
+    <div class="cs-card" data-fd-action="case" data-fd-case="proj-plastic" role="button" tabindex="0" aria-label="Open Project Plastic">
+      <div class="cs-img" style="--cs-c1:#E8F8F4; --cs-c2:#B0E0D4;">
+        <img src="plastic/kas-straw.png" alt="Project Plastic — #TheLastStraw campaign" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="cs-body">
+        <div class="cs-tags">
+          <span class="cs-tag">Advocacy</span>
+          <span class="cs-tag">Sustainability</span>
+          <span class="cs-tag">2018</span>
+        </div>
+        <h3 class="cs-title">Project Plastic</h3>
+        <p class="cs-desc">Reduced campus plastic use through reusable straw sales (~150), a Zero Plastic Lunch Day, school-wide advocacy, and improved recycling systems.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+<!-- ═══════════════════════ EXPERIENCE ════════════════ -->
+<section id="experience" class="wrap">
+
+  <div class="section-hd">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Experience</h2>
+  </div>
+
+  <!-- ── TIMELINE ── -->
+  <div class="tl-outer">
+    <div class="tl-row">
+
+      <!-- 1 · GIN — above -->
+      <div class="tl-col tl-col--above">
+        <div class="tl-above">
+          <time class="tl-date">Jan 2019 – Jun 2021</time>
+          <div class="tl-badge tl-badge--rust">
+            <span class="tl-b-role">President</span>
+            <span class="tl-b-org">Global Issues Network</span>
+          </div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-below"></div>
+      </div>
+
+      <!-- 2 · SUNS — below -->
+      <div class="tl-col tl-col--below">
+        <div class="tl-above"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-below">
+          <time class="tl-date">Mar 2022 – Jun 2024</time>
+          <p class="tl-dn-role">Marketing Officer</p>
+          <p class="tl-dn-org">Sydney Uni Nutrition Society</p>
+          <ul class="tl-dn-bullets">
+            <li>Led cross-club event collaborations</li>
+            <li>Grew Instagram engagement ~30%</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3 · Rotary — above -->
+      <div class="tl-col tl-col--above">
+        <div class="tl-above">
+          <time class="tl-date">Feb – Jun 2024</time>
+          <div class="tl-badge tl-badge--amber">
+            <span class="tl-b-role">Project Consultant</span>
+            <span class="tl-b-org">Rotary International</span>
+          </div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-below"></div>
+      </div>
+
+      <!-- 4 · Bibit — below -->
+      <div class="tl-col tl-col--below">
+        <div class="tl-above"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-below">
+          <time class="tl-date">Sep – Dec 2024</time>
+          <p class="tl-dn-role">Product Marketing</p>
+          <p class="tl-dn-org">Bibit.ID</p>
+          <ul class="tl-dn-bullets">
+            <li>Boosted alumni participation ~25–30%</li>
+            <li>~40% registrations via social</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5 · BUSSA — above -->
+      <div class="tl-col tl-col--above">
+        <div class="tl-above">
+          <time class="tl-date">Feb 2025 – Present</time>
+          <div class="tl-badge tl-badge--sage">
+            <span class="tl-b-role">Media &amp; Marketing Coord.</span>
+            <span class="tl-b-org">BU Singapore Students Assoc.</span>
+          </div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-below"></div>
+      </div>
+
+      <!-- 6 · Her Campus — below -->
+      <div class="tl-col tl-col--below">
+        <div class="tl-above"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-below">
+          <time class="tl-date">Feb 2026 – Present</time>
+          <p class="tl-dn-role">Marketing Member</p>
+          <p class="tl-dn-org">Her Campus Boston University</p>
+          <ul class="tl-dn-bullets">
+            <li>Brand campaigns &amp; recruitment</li>
+            <li>Articles &amp; weekly newsletters</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+
+
+<!-- ═══════════════════════ SKILLS ════════════════════ -->
+<section id="skills" class="wrap">
+
+  <div class="section-hd">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="skill-col">
+      <p class="skill-col-title">Strategy &amp; Creative</p>
+      <div class="pills">
+        <span class="pill">Brand Strategy</span>
+        <span class="pill">Campaign Planning</span>
+        <span class="pill">Content Strategy</span>
+        <span class="pill">Storytelling</span>
+        <span class="pill">Event Production</span>
+        <span class="pill">Influencer &amp; KOL Marketing</span>
+        <span class="pill">Consumer Research</span>
+        <span class="pill">Market Entry Strategy</span>
+        <span class="pill">Partnership Strategy</span>
+        <span class="pill">Product Strategy</span>
+        <span class="pill">Project Management</span>
+        <span class="pill">UX Research</span>
+        <span class="pill">Cultural Intelligence</span>
+        <span class="pill">Social Impact</span>
+      </div>
+    </div>
+
+    <div class="skill-col">
+      <p class="skill-col-title">Tools &amp; Platforms</p>
+      <div class="pills">
+        <span class="pill">Canva</span>
+        <span class="pill">Mailchimp</span>
+        <span class="pill">HubSpot</span>
+        <span class="pill">RStudio</span>
+        <span class="pill">Excel</span>
+        <span class="pill">PowerPoint</span>
+        <span class="pill">CapCut</span>
+        <span class="pill">iMovie</span>
+        <span class="pill">Instagram / Meta</span>
+        <span class="pill">Google Workspace</span>
+        <span class="pill">MS Office</span>
+      </div>
+    </div>
+
+    <div class="skill-col">
+      <p class="skill-col-title">Languages</p>
+      <div class="pills">
+        <span class="pill">English — Native</span>
+        <span class="pill">Indonesian — Native</span>
+        <span class="pill">Mandarin — Fluent</span>
+        <span class="pill">Spanish — Beginner</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════ CONTACT / FOOTER ══════════ -->
+<footer id="contact">
+  <div class="contact-inner">
+
+    <div class="contact-top">
+      <h2 class="contact-h2">Let's make<br><em>something.</em></h2>
+      <div class="contact-cta-wrap">
+        <a href="mailto:contact.stephwidjaja@gmail.com" class="contact-email-btn">say hi! &nbsp;↗</a>
+        <div style="display:flex;gap:0.5rem;">
+          <a href="https://www.instagram.com/tastebudsarchive" class="contact-li-btn" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/steph-widjaja" class="contact-li-btn" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-bar">
+      <div class="contact-brand">
+        <span class="contact-brand-mark">SW</span>
+        <span class="contact-brand-name">Stephanie Widjaja</span>
+        <span class="contact-brand-loc">Boston, MA &mdash; Open to remote &amp; relocation</span>
+      </div>
+      <nav class="contact-nav" aria-label="Footer navigation">
+        <a href="about.html">About</a>
+        <a href="#work">Work</a>
+        <a href="resume.html">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <span class="contact-copy">&copy; 2026 Stephanie Widjaja</span>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════ JS ════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  function updateNav() {
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+  }, { passive: true });
+})();
+
+
+// Star labels pop out on image hover
+(function () {
+  const scene = document.querySelector('.hero-scene');
+  const imgWrap = document.querySelector('.hero-img-wrap');
+  if (!scene || !imgWrap) return;
+
+  let audioCtx = null;
+  function getCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
+  function playSparkle() {
+    try {
+      const ctx = getCtx();
+      const notes = [659, 784, 1047, 1319];
+      notes.forEach(function (freq, i) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.08, ctx.currentTime + i * 0.08 + 0.12);
+        gain.gain.setValueAtTime(0, ctx.currentTime + i * 0.08);
+        gain.gain.linearRampToValueAtTime(0.35, ctx.currentTime + i * 0.08 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.22);
+        osc.start(ctx.currentTime + i * 0.08);
+        osc.stop(ctx.currentTime + i * 0.08 + 0.25);
+      });
+    } catch (e) {}
+  }
+
+  imgWrap.addEventListener('mouseenter', function () {
+    scene.classList.add('labels-visible');
+    playSparkle();
+  });
+  imgWrap.addEventListener('mouseleave', function () {
+    scene.classList.remove('labels-visible');
+  });
+})();
+
+// Stagger entrance
+(function () {
+  var items = Array.from(document.querySelectorAll('.si'));
+  items.forEach(function (el, i) {
+    setTimeout(function () { el.classList.add('on'); }, 60 + i * 110);
+  });
+})();
+
+// Folder system
+(function () {
+  var cases = {
+    'bibit-art': { richHtml: `
+      <p class="fdo-eyebrow">Product Marketing · Bibit.ID — Lead Partner</p>
+      <h2 class="fdo-title">Art Jakarta 2024</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Event</span><span class="fdo-meta-val">4–6 October 2024 · JIEXPO Kemayoran, Jakarta</span></div>
+        <div><span class="fdo-meta-label">Role</span><span class="fdo-meta-val">Lead Partner · Content &amp; Social Campaign</span></div>
+        <div><span class="fdo-meta-label">Channels</span><span class="fdo-meta-val">Social Media · Editorial Content · VIP Activation · CRM</span></div>
+      </div>
+      <img src="bibit/artjak-announce.jpg" alt="Art Jakarta 2024 — Consistency Builds Wealth" class="fdo-hero">
+
+      <h3 class="fdo-section-heading">The Campaign</h3>
+      <p class="fdo-body">Bibit and Stockbit partnered as Lead Partner for Art Jakarta 2024 — Indonesia's premier contemporary art fair. The campaign concept, <em>"Consistency Builds Wealth"</em>, drew a parallel between the patience of the artist and the discipline of the investor: <em>"Like knitting, wealth is not created overnight, it is crafted with patience."</em> The key visual featured hand-illustrated animals in various stages of completion, bridging the art world's aesthetic with Bibit's financial brand.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Content Strategy</span>
+        <p class="fdo-finding-title">Multi-week editorial calendar across Bibit &amp; Stockbit channels</p>
+        <p class="fdo-body">Planned and executed a content calendar anchored to the art fair's three-day run. Built awareness within the arts and culture community through targeted editorial content, audience segmentation, and platform-native creative formats — connecting the Bibit brand to a culturally engaged, high-net-worth demographic.</p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">VIP Activation</span>
+        <p class="fdo-finding-title">VIP invite campaign for premium Bibit users</p>
+        <p class="fdo-body">Produced a VIP invitation campaign targeting Bibit's premium user segment — reinforcing the brand's premium positioning and deepening loyalty among high-value investors through exclusive cultural access.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+        <img src="bibit/artjak-vip.jpg" alt="Art Jakarta VIP Invite" style="width:100%;border-radius:10px;object-fit:cover;">
+        <img src="bibit/artjak-booth.png" alt="Bibit booth at Art Jakarta" style="width:100%;border-radius:10px;object-fit:cover;">
+      </div>
+    ` },
+    'bibit-padel': { richHtml: `
+      <p class="fdo-eyebrow">Product Marketing · Bibit.ID — Event</p>
+      <h2 class="fdo-title">Bibit Stockbit Open — Padel Tournament</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Date</span><span class="fdo-meta-val">Saturday, 19 October 2024 · Padel Pro, Kemang, Jakarta Selatan</span></div>
+        <div><span class="fdo-meta-label">Scale</span><span class="fdo-meta-val">60 players · 100–150 guests · 6 courts</span></div>
+        <div><span class="fdo-meta-label">Format</span><span class="fdo-meta-val">Beginner &amp; Intermediate categories · 07:00–15:00</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">60</span><span class="fdo-stat-l"> players</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">150</span><span class="fdo-stat-l"> guests</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">10+</span><span class="fdo-stat-l"> sponsor &amp; F&B partners</span></div>
+      </div>
+      <img src="bibit/padel-action.jpg" alt="Player on branded court at Bibit Stockbit Open" class="fdo-hero">
+
+      <h3 class="fdo-section-heading">Event Overview</h3>
+      <p class="fdo-body">A full-day padel tournament held at Padel Pro Kemang, positioning Bibit and Stockbit within Jakarta's growing lifestyle sports community. Two competitive brackets (beginner and intermediate) ran across six courts, with sponsor and F&B activations filling the venue's public spaces.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Logistics &amp; Ops</span>
+        <p class="fdo-finding-title">End-to-end event execution — registration, courts, F&B &amp; sponsors</p>
+        <p class="fdo-body">Managed venue layout across two floors including 6 courts, F&B stalls (Nonna Bona, Common Grounds, Ao Buns, Matchaya, Oatside, and others), sponsor booths (Neta, Mandaya, Palm), and games zones. Coordinated loading schedules for 10+ tenants, bracelet-based F&B redemption system, and day-of registration — Stephanie served as Registration crew lead.</p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Lucky Draw Activation</span>
+        <p class="fdo-finding-title">Investment-linked lucky draw — minimum IDR 1M transaction in Bibit</p>
+        <p class="fdo-body">Lucky draw mechanic required attendees to show proof of a minimum IDR 1,000,000 Bibit investment and follow Bibit/Stockbit Instagram to enter. Prizes: Stockbit Tumblers, Mandaya MCU, Palm Polo shirts, Skull Padel Racket, Massage Guns — directly tying event engagement to platform conversion.</p>
+      </div>
+    ` },
+    'bibit-mine': { richHtml: `
+      <p class="fdo-eyebrow">Product Marketing · Bibit.ID × Mine Perfumery</p>
+      <h2 class="fdo-title">Bibit × Mine Perfumery Collection</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Period</span><span class="fdo-meta-val">Sep – Dec 2024 · Jakarta, Indonesia</span></div>
+        <div><span class="fdo-meta-label">Channels</span><span class="fdo-meta-val">Social Media · KOL/PR · CRM · Tokopedia · Shopee · Offline (PIM)</span></div>
+        <div><span class="fdo-meta-label">Pop-up</span><span class="fdo-meta-val">MINE Store, Pondok Indah Mall · 16–22 Dec 2024</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">3,000</span><span class="fdo-stat-l"> units produced</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">4</span><span class="fdo-stat-l"> exclusive scents</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">10+</span><span class="fdo-stat-l"> KOLs activated</span></div>
+      </div>
+      <img src="bibit/mine-hero.jpg" alt="Bibit x Mine Perfumery Collection" class="fdo-hero">
+
+      <h3 class="fdo-section-heading">The Concept</h3>
+      <p class="fdo-body">A luxury fragrance collaboration bridging Bibit/Stockbit's investment brand with Mine Perfumery's premium positioning. The central idea: <em>"Smell Rich, Feel Rich"</em> — each scent was designed to make the wearer feel empowered, wealthy, and confident; mirroring the feeling of smart, consistent investing. The campaign targeted Bibit's premium and high-end users (Millennials, Gen Z, unisex) at a retail price of IDR 389,000 per bottle.</p>
+
+      <h3 class="fdo-section-heading">The Four Scents</h3>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge" style="background:#E8F4E8; color:#2A5C2A;">Trust Fund Baby — Bibit</span>
+        <p class="fdo-finding-title">Target: Female · Gen Z · Young Professionals</p>
+        <p class="fdo-body">Notes: Black Pepper, Orange / Sandalwood, Poppy, Ambroxan, Neroli / Vanilla, Bank Notes, White Musk, Patchouli. <em>"Trust fund baby brings wealth while you sleep. Effortless abundance, one legacy at a time."</em></p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge" style="background:#E8F4E8; color:#2A5C2A;">Dirty Money — Bibit</span>
+        <p class="fdo-finding-title">Target: Unisex · Millennials · Office Workers</p>
+        <p class="fdo-body">Notes: Rosemary, Violet Leaf, Bergamot / Myrrh, Labdanum, Olibanum, Vanilla / Wallet, Amber, Oud, Sandalwood, Cedar. <em>"They say money can't buy happiness — with Dirty Money, we beg to differ."</em></p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+        <img src="bibit/mine-talent-f.png" alt="Campaign talent — Trust Fund Baby" style="width:100%;border-radius:10px;object-fit:cover;aspect-ratio:3/4;">
+        <img src="bibit/mine-talent-m.png" alt="Campaign talent — Dirty Money" style="width:100%;border-radius:10px;object-fit:cover;aspect-ratio:3/4;">
+      </div>
+
+      <h3 class="fdo-section-heading">GTM &amp; Activation</h3>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Pre-Launch</span>
+        <p class="fdo-finding-title">Photoshoot, KOL gifting &amp; teaser campaign — Oct/Nov 2024</p>
+        <p class="fdo-body">Coordinated creative asset production including talent photoshoots and product videoshoots. Built a KOL gifting strategy across 10+ key opinion leaders to seed organic buzz ahead of launch. Teaser content rolled out across all Bibit/Stockbit channels from 9 December.</p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Launch &amp; Pop-up</span>
+        <p class="fdo-finding-title">Pop-up installation at MINE, Pondok Indah Mall — 16–22 Dec 2024</p>
+        <p class="fdo-body">Developed in-store pop-up concept featuring a 3D money-flower frame installation (IDR 100K &amp; 50K notes with pink roses) and two acrylic podiums with gradient green lighting. A dense 20+ post social media calendar ran from launch day through March 2025, including feed posts, reels, giveaway, and interview reels.</p>
+      </div>
+      <img src="bibit/mine-product.png" alt="D!MNPEH product on gold tray" style="width:100%;border-radius:10px;margin:1rem 0;object-fit:cover;max-height:300px;">
+    ` },
+    'bibit-pilates': { richHtml: `
+      <p class="fdo-eyebrow">Product Marketing · Bibit.ID — Event</p>
+      <h2 class="fdo-title">Bibit Pilates Social</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Date</span><span class="fdo-meta-val">Saturday, 21 September 2024 · Platform Jakarta</span></div>
+        <div><span class="fdo-meta-label">Audience</span><span class="fdo-meta-val">Exclusive · Bibit &amp; Stockbit premium users</span></div>
+        <div><span class="fdo-meta-label">Channels</span><span class="fdo-meta-val">Social Media · Influencer Partnerships · CRM / Email</span></div>
+      </div>
+      <img src="bibit/pilates-studio.jpg" alt="Bibit Pilates Social at Platform Jakarta" class="fdo-hero">
+
+      <h3 class="fdo-section-heading">The Concept</h3>
+      <p class="fdo-body">An exclusive reformer pilates session at Platform Jakarta, designed to build Bibit's presence in Jakarta's wellness community. The brand messaging drew a direct parallel between pilates and investing: <em>"Focus on Your Core — just like in Pilates, where you build strength from the core, Bibit helps you grow your savings from small, consistent investments."</em></p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Registration Campaign</span>
+        <p class="fdo-finding-title">Social &amp; influencer campaign drove ~40% of sign-ups</p>
+        <p class="fdo-body">Built and executed a targeted social and email campaign, expanding reach by partnering with 3–5 local fitness influencers. The campaign brought in a meaningful share of first-time Bibit users and strengthened the brand's position in Jakarta's wellness-conscious, financially active demographic.</p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Investment-Linked Gift Mechanic</span>
+        <p class="fdo-finding-title">Exclusive collectible gifts tied to investment milestones</p>
+        <p class="fdo-body">Attendees who made qualifying Bibit/Stockbit investments on the day received exclusive collectible gifts — creating a direct conversion incentive at the event:</p>
+        <ul class="fdo-rec-list">
+          <li>IDR 10,000,000 invested → Labubu Keychain</li>
+          <li>IDR 15,000,000 invested → Powerpuff Girls Keychain</li>
+          <li>IDR 20,000,000 invested → Powerpuff Girls Figure</li>
+        </ul>
+      </div>
+      <img src="bibit/pilates-gifts.jpg" alt="Gift tier mechanic — Pilates Social" style="width:100%;border-radius:10px;margin:1rem 0;display:block;">
+    ` },
+    'hercampus': { richHtml: `
+      <p class="fdo-eyebrow">Marketing Member · HerCampus Boston University</p>
+      <h2 class="fdo-title">HerCampus Boston University</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Role</span><span class="fdo-meta-val">Marketing Member</span></div>
+        <div><span class="fdo-meta-label">Period</span><span class="fdo-meta-val">Feb 2026 – Present · Boston, MA</span></div>
+        <div><span class="fdo-meta-label">Community</span><span class="fdo-meta-val">120+ Newsletter Members</span></div>
+      </div>
+
+      <h3 class="fdo-section-heading">Overview</h3>
+      <p class="fdo-body">Authored articles, produced social content, and managed weekly newsletters for a 120+ member community. Contributed to brand campaigns and recruitment strategy — building Her Campus BU's voice as a platform for student storytelling and community building at Boston University.</p>
+
+      <h3 class="fdo-section-heading">Selected Newsletter Examples</h3>
+      <p class="fdo-body" style="margin-bottom:0;">A sample of newsletters written and produced as part of a recurring weekly send. Each edition was written and designed end-to-end — including event roundups, editorial features, member spotlights, and community CTAs.</p>
+      <div class="hcbu-tabs">
+        <button class="hcbu-tab active" data-src="hcbu/email-1-earthday.html">Earth Day</button>
+        <button class="hcbu-tab" data-src="hcbu/email-2-campaign.html">Campaign Week</button>
+        <button class="hcbu-tab" data-src="hcbu/email-3-skincare.html">Skincare Night</button>
+        <button class="hcbu-tab" data-src="hcbu/email-4-springbreak.html">Spring Break</button>
+      </div>
+      <div class="hcbu-iframe-wrap">
+        <iframe id="hcbuFrame" src="hcbu/email-1-earthday.html" title="HerCampus BU Newsletter" sandbox="allow-same-origin allow-popups"></iframe>
+      </div>
+      <p class="fdo-body" style="margin-top:0.75rem;font-size:0.8rem;color:var(--muted);">These are selected examples from a recurring weekly newsletter sent to 120+ members.</p>
+    ` },
+    'suns': {
+      org: 'Marketing Officer · Sydney University Nutrition Society',
+      title: 'Sydney University Nutrition Society',
+      date: 'Mar 2022 – Jun 2024', location: 'Sydney, Australia',
+      metric: '~30%', metricLabel: 'Engagement growth',
+      body: 'Led cross-club event collaborations and developed an Instagram content strategy over two years. Grew engagement ~30% and elevated awareness of healthy-eating initiatives across the university community — building SUNS\' social presence from a passive feed into an active, community-driven platform.'
+    },
+    'rotary': {
+      org: 'Project Consultant · Rotary International',
+      title: 'Rotary International',
+      date: 'Feb – Jun 2024', location: 'International',
+      metric: '5-mo', metricLabel: 'Research project',
+      body: 'Contributed to a 5-month interdisciplinary analysis of member retention trends across Rotary clubs. Developed a mentoring framework designed to drive recruitment of young women into leadership roles — translating research findings into a concrete, actionable strategy for a global organisation.'
+    },
+    'proj-build': { richHtml: `
+      <p class="fdo-eyebrow">UX Research · The Build Fellowship</p>
+      <h2 class="fdo-title">Improving UX of Digital Products</h2>
+      <img src="https://stephwidjaja.github.io/zara-case-study/assets/hero.png" alt="Zara editorial homepage" class="fdo-hero">
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Role</span><span class="fdo-meta-val">UX Researcher (solo)</span></div>
+        <div><span class="fdo-meta-label">Duration</span><span class="fdo-meta-val">1 month · 2026</span></div>
+        <div><span class="fdo-meta-label">Platform</span><span class="fdo-meta-val">Web (desktop)</span></div>
+        <div><span class="fdo-meta-label">Tools</span><span class="fdo-meta-val">Lookback · Nielsen's 10 Heuristics</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">3</span><span class="fdo-stat-l"> participants</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">5</span><span class="fdo-stat-l"> tasks tested</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">5</span><span class="fdo-stat-l"> issues found</span></div>
+      </div>
+      <p class="fdo-body">Zara's e-commerce site maintains visual sophistication matching its luxury positioning, but user sessions revealed significant self-navigation demands. This study examined friction points affecting the 18–30 fashion consumer demographic through heuristic assessment and task-based usability testing.</p>
+
+      <h3 class="fdo-section-heading">Findings</h3>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Critical · 2 of 3 participants</span>
+        <p class="fdo-finding-title">Homepage lacks product entry point guidance</p>
+        <img src="https://stephwidjaja.github.io/zara-case-study/assets/finding-1.png" alt="P2 at Zara homepage at task initiation" class="fdo-finding-img">
+        <blockquote class="fdo-quote">"I feel like I cannot really see anything from the homepage so I have to like personally find my own. Find the category that says pants."<cite>— P2</cite></blockquote>
+        <p class="fdo-body">Full-bleed editorial imagery dominates the viewport with no visible product entry points, pushing users toward manual menu navigation and wasting homepage potential for trending inventory display.</p>
+        <ul class="fdo-rec-list">
+          <li>Restructure homepage to prioritise clear product entry points above the fold</li>
+          <li>Surface featured categories, trends, and seasonal collections alongside editorial imagery</li>
+        </ul>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Critical · High-impact signal</span>
+        <p class="fdo-finding-title">Search crosses brand boundaries without scope transparency</p>
+        <img src="https://stephwidjaja.github.io/zara-case-study/assets/finding-2.png" alt="P3 search results showing Massimo Dutti items" class="fdo-finding-img">
+        <blockquote class="fdo-quote">"Wait, am I in? Does it only search within? That's why everything was so taxed."<cite>— P3, after discovering results were scoped to Massimo Dutti</cite></blockquote>
+        <p class="fdo-body">Search-scope confusion skewed P3's pricing perception of Zara throughout the entire session — she departed believing Zara pricing was higher than reality.</p>
+        <ul class="fdo-rec-list">
+          <li>Add a visible "Searching: Zara Woman" scope indicator near the search bar</li>
+          <li>Include a toggle to expand or narrow search scope</li>
+          <li>Visually distinguish brand transitions when navigating across Inditex subsidiaries</li>
+        </ul>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Critical · 3 of 3 participants</span>
+        <p class="fdo-finding-title">Browsing generates cognitive load; users develop tracking workarounds</p>
+        <blockquote class="fdo-quote">"I would open it in a different tab so that I can keep scrolling while keeping track of an item that I'm into."<cite>— P1</cite></blockquote>
+        <p class="fdo-body">All three participants adopted compensatory strategies. The site prioritises linear discovery over exploratory shopping — the target demographic's primary mode.</p>
+        <ul class="fdo-rec-list">
+          <li>Introduce quick-view modals to inspect items without leaving the product grid</li>
+          <li>Add a persistent shortlist or favourites panel visible during browsing</li>
+          <li>Surface recently-viewed items to restore session continuity</li>
+        </ul>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Moderate</span>
+        <p class="fdo-finding-title">Product card clickability cues lack clarity</p>
+        <blockquote class="fdo-quote">"That means I can't click on, right? This is bad. I don't like it."<cite>— P3</cite></blockquote>
+        <ul class="fdo-rec-list">
+          <li>Implement clear hover states for desktop product tiles</li>
+          <li>Standardise click targets and visually differentiate interactive tiles from editorial imagery</li>
+        </ul>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Moderate · 2 of 3 participants</span>
+        <p class="fdo-finding-title">Size availability hidden until add-to-cart commitment</p>
+        <img src="https://stephwidjaja.github.io/zara-case-study/assets/finding-5.png" alt="P2 viewing product page with sizes hidden" class="fdo-finding-img">
+        <blockquote class="fdo-quote">"I would check if it's available in my size by clicking Add and then it says all the sizes that it's available in."<cite>— P2</cite></blockquote>
+        <ul class="fdo-rec-list">
+          <li>Surface in-stock sizes directly on product pages</li>
+          <li>Enable size visibility via quick-view before commitment actions</li>
+        </ul>
+      </div>
+
+      <h3 class="fdo-section-heading">Reflection</h3>
+      <p class="fdo-body">P1's frictionless performance revealed that the site rewards users already acclimated to its unconventional patterns — not first-time shoppers. Severity was weighted equally with frequency: P3's search-scope confusion appeared once yet warranted critical classification due to its impact on brand perception. Four initially assumed issues — filters, product information, checkout flow — were dropped when data didn't support them, reinforcing research integrity over confirmation bias.</p>
+
+      <a href="https://stephwidjaja.github.io/zara-case-study/" target="_blank" rel="noopener" class="fdo-ext-link">View full case study ↗</a>
+    ` },
+    'proj-rotary': {
+      org: 'Project Consultant · Rotary International',
+      title: 'Industry & Community Project Consultant',
+      date: 'Feb – Jun 2024', location: 'International',
+      metric: '5-mo', metricLabel: 'Research project',
+      body: 'Contributed to a 5-month interdisciplinary team project analyzing member retention and diversity engagement across Rotary clubs. Researched and proposed a mentoring framework to increase retention and recruitment of young women, evaluating effectiveness against existing Rotary initiatives.'
+    },
+    'proj-food': { richHtml: `
+      <p class="fdo-eyebrow">Food Product Development · University of Sydney</p>
+      <h2 class="fdo-title">D!MNPEH — Tempeh Chips</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Course</span><span class="fdo-meta-val">NUTM / FOOD / MICR 3888 — Interdisciplinary Project</span></div>
+        <div><span class="fdo-meta-label">Duration</span><span class="fdo-meta-val">Aug – Dec 2023 · Sydney, Australia</span></div>
+        <div><span class="fdo-meta-label">Disciplines</span><span class="fdo-meta-val">Nutritional Sciences · Food Science · Microbiology</span></div>
+        <div><span class="fdo-meta-label">Methods</span><span class="fdo-meta-val">Market Research · Sensory Testing · Consumer Surveys · HACCP</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">88%</span><span class="fdo-stat-l"> preferred D!MNPEH over competitor</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">4/5</span><span class="fdo-stat-l"> Health Star Rating</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">18</span><span class="fdo-stat-l"> consumer survey participants</span></div>
+      </div>
+      <img src="dimnpeh-concept.png" alt="D!MNPEH product concept board" class="fdo-hero">
+      <p class="fdo-body">A six-person interdisciplinary team project developing a new-to-market snack product from concept to prototype. Targeting Australia's $2.2B healthy snack market — growing 2.3% over five years — we identified a gap for a product that was simultaneously high in protein, plant-based, low in sodium, and gut-health supportive.</p>
+
+      <h3 class="fdo-section-heading">The Product</h3>
+      <p class="fdo-body"><strong>D!MNPEH</strong> is an oven-baked tempeh chip made from Australian-sourced soybeans, tapioca starch, and avocado oil, seasoned with Himalayan salt and garlic powder. The fermentation process uses <em>Rhizopus oligosporus</em> over 48–72 hours, producing a crispy, nutty, umami chip with paraprobiotic benefits — gluten-free and 100% plant-based.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Market Opportunity</span>
+        <p class="fdo-finding-title">Identified nutritional gap in the Australian snack market</p>
+        <p class="fdo-body">Competitor analysis of five market-leading healthy snacks (Quest Protein Chips, Vege Chips, Temple Broccoli Puffs, Healtheries Rice Wheels, Cobs Popcorn) revealed a consistent pattern: high-protein products were high in sodium and artificial additives; fibre-rich products were low in protein. No product delivered both in a clean-label, plant-based format.</p>
+        <ul class="fdo-rec-list">
+          <li>D!MNPEH: ~36g protein per 100g (from soybeans), dietary fibre, 0 artificial additives</li>
+          <li>Natural salt enhancer reduces sodium content by ~50% without flavour loss</li>
+          <li>Avocado oil baking keeps saturated fat low vs. conventional fried snacks</li>
+        </ul>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Nutritional Profile</span>
+        <p class="fdo-finding-title">High protein · low sodium · paraprobiotic · gluten-free</p>
+        <p class="fdo-body">The fermentation process enhances isoflavone bioavailability, increases Vitamin B12 levels (critical for vegan diets), and stimulates IgA antibody production for gut mucosal protection. Baking at 220°C for 5 min 40 sec achieves optimal crispiness (fracture force 8.3–12.0 N) and water activity (0.49 aW) — well below the 0.6 aW microbial growth threshold — supporting a 6–9 month ambient shelf life.</p>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Consumer Research</span>
+        <p class="fdo-finding-title">Two-stage consumer survey: concept testing + blind taste test</p>
+        <p class="fdo-body">Survey 1 (general population, n=18) profiled snacking behaviours, dietary preferences, and purchase intent using Likert scales. Survey 2 ran a blind A/B taste test against a leading competitor, assessing hedonic liking (9-point scale), flavour profile, and purchase likelihood.</p>
+        <ul class="fdo-rec-list">
+          <li>88% of taste-test participants preferred D!MNPEH (Product B) over the competitor</li>
+          <li>Majority rated flavour as "Perfectly Balanced" — nutty, umami, savoury with hint of garlic</li>
+          <li>Minority feedback split between "Overly Salty" and "Underseasoned" — attributed to hand-seasoning inconsistency in prototype production</li>
+        </ul>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Branding &amp; Go-to-Market</span>
+        <p class="fdo-finding-title">Premium positioning at accessible price point</p>
+        <p class="fdo-body">Retail price set at $4.00 / 60g unit ($6.50/100g), positioned at the lower end of the premium health snack bracket ($7–$11/100g). Distribution prioritised specialty health food stores, select gyms, and direct-to-consumer. Packaging: nitrogen-flushed, heat-sealed metalized film (PP/PET) for maximum shelf life and product integrity.</p>
+      </div>
+
+      <h3 class="fdo-section-heading">Prototype Development</h3>
+      <p class="fdo-body">The product went through multiple iterative trials before reaching final specification. Two key dead ends shaped the final formula:</p>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge" style="background:#EDD6C4;">Iteration 1 — Failed</span>
+        <p class="fdo-finding-title">Vinegar added to accelerate fermentation → abandoned</p>
+        <p class="fdo-body">An initial plan to add vinegar to the tempeh mixture to aid fermentation was tested and abandoned. The result produced an off-flavour and bitter aftertaste that made the chip unpalatable, despite successful fermentation activity.</p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge" style="background:#EDD6C4;">Iteration 2 — Failed</span>
+        <p class="fdo-finding-title">Protein powder added to boost protein content → inhibited fermentation</p>
+        <p class="fdo-body">Attempting to amplify the product's already-high protein profile, the team tried incorporating protein powder into the soybean mix. Literature later attributed the failure to lactoperoxidase in whey-based protein powder, which inhibits the yeast and bacterial growth required for <em>Rhizopus oligosporus</em> fermentation.</p>
+      </div>
+      <p class="fdo-body">Through successive trials, the team finalised: optimal tapioca starch-to-soybean ratio for structure and crunch, 48–72h room-temperature fermentation in perforated cylinder-shaped bags, and a precise baking window of 220°C for 5 minutes 40 seconds — producing a thin, flat, round chip with visible soybean cross-sections, a golden-brown colour, and a fracture force of 8.3–12.0 N.</p>
+
+      <h3 class="fdo-section-heading">My Contribution</h3>
+      <p class="fdo-body">Led the marketing and consumer research workstream: designed both consumer surveys (concept test and blind taste test), synthesised findings into actionable positioning insights, and translated technical attributes — fermentation, paraprobiotic benefits, fracture force — into consumer-friendly language and brand copy. Drove the brand name (D!MNPEH — a phonetic nod to "damn" and "tempeh"), packaging direction, and go-to-market strategy including price positioning, distribution channel selection, and the competitive gap analysis that defined the product's market entry rationale.</p>
+    ` },
+    'proj-metabolic': { richHtml: `
+      <p class="fdo-eyebrow">Research Project · University of Sydney</p>
+      <h2 class="fdo-title">Metabolic Cybernetics — Folic Acid &amp; Diabetes</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Course</span><span class="fdo-meta-val">NUTM / STAT 3888 — Interdisciplinary Project</span></div>
+        <div><span class="fdo-meta-label">Duration</span><span class="fdo-meta-val">Aug – Dec 2023 · Sydney, Australia</span></div>
+        <div><span class="fdo-meta-label">Disciplines</span><span class="fdo-meta-val">Nutritional Sciences · Statistical Machine Learning</span></div>
+        <div><span class="fdo-meta-label">Methods</span><span class="fdo-meta-val">Linear Regression · Logistic Regression · Z-tests · R (ggplot2, caret)</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">2,411</span><span class="fdo-stat-l"> observations (AHS 2011)</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">p=0.036</span><span class="fdo-stat-l"> FPG–folate (upsampled)</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">p=0.049</span><span class="fdo-stat-l"> LDL-c at high folate intake</span></div>
+      </div>
+      <p class="fdo-body">A six-person cross-disciplinary research project using data from the Australian Health Survey 2011 to investigate whether folic acid supplementation (FAS) has a measurable relationship with fasting plasma glucose (FPG) and LDL-cholesterol — two key biomarkers in type 2 diabetes management.</p>
+
+      <h3 class="fdo-section-heading">Presentation Slides</h3>
+      <div class="fdo-slides" id="metSlides">
+        <div class="fdo-slides-track">
+          <img id="metSlideImg" src="metabolics/slide-01.png" alt="Slide 1 of 10">
+        </div>
+        <div class="fdo-slides-nav">
+          <button class="fdo-slides-btn" id="metPrev" aria-label="Previous slide">&#8592;</button>
+          <span class="fdo-slides-counter"><span id="metCur">1</span> / 10</span>
+          <button class="fdo-slides-btn" id="metNext" aria-label="Next slide">&#8594;</button>
+        </div>
+      </div>
+
+      <h3 class="fdo-section-heading">Key Findings</h3>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Fasting Plasma Glucose</span>
+        <p class="fdo-finding-title">Weak relationship with folate — only at slightly elevated FPG levels</p>
+        <p class="fdo-body">No significant relationship was found between folate intake and normal FPG (p=0.2) or severely elevated FPG (p=0.99). After 20% upsampling to address class imbalance in the AHS dataset, a statistically significant difference emerged in the slightly-elevated FPG category 2 (p=0.036) — suggesting a conditional relationship between folate and early-stage glycaemic impairment.</p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">LDL-Cholesterol</span>
+        <p class="fdo-finding-title">Significant effect only at high folate intake (&gt;45 nmol/L/day)</p>
+        <p class="fdo-body">Linear regression showed no difference between low and moderate folate categories on LDL-c (p=0.978). However, high folate intake (&gt;45 nmol/L/day) produced a significant difference in LDL-c proportions (p=0.0058). The relationship was also stronger in females than males — suggesting sex-specific metabolic pathways that could inform personalised dietary interventions.</p>
+      </div>
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge" style="background:#EDD6C4;">Limitations</span>
+        <p class="fdo-finding-title">Convenience sampling, confounding variables, 2-day data window</p>
+        <p class="fdo-body">The AHS 2011 cross-sectional data cannot establish causality, and the 2-day dietary recall window cannot capture chronic FAS exposure. Confounders including gender, age, smoking, and lifestyle were not fully controlled. Upsampling corrected class imbalance but introduced some risk of overfitting.</p>
+      </div>
+
+      <h3 class="fdo-section-heading">My Contribution</h3>
+      <p class="fdo-body">Co-authored the abstract, introduction, and discussion sections. Contributed to editing methods, results, and limitations. Synthesised cross-disciplinary findings from nutritional science and statistical machine learning into a cohesive research narrative — developing analytical rigour through working with real-world biomedical datasets.</p>
+    ` },
+    'proj-honduras': { richHtml: `
+      <p class="fdo-eyebrow">Global Issues Network · Kaohsiung American School</p>
+      <h2 class="fdo-title">Project Honduras</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Role</span><span class="fdo-meta-val">KAS GIN Club — Campaign Lead</span></div>
+        <div><span class="fdo-meta-label">Period</span><span class="fdo-meta-val">Dec 2020 – Apr 2021 · Kaohsiung, Taiwan</span></div>
+        <div><span class="fdo-meta-label">Channels</span><span class="fdo-meta-val">Video · Email · Social Media · Donation Drives</span></div>
+      </div>
+      <img src="honduras/cover.png" alt="Project Honduras — Your Contribution, Many Solutions" class="fdo-hero">
+      <h3 class="fdo-section-heading">The Campaign</h3>
+      <p class="fdo-body">In the middle of the COVID-19 pandemic, when international GIN conferences were cancelled, our club chose not to stop. We partnered with a Honduras-based GIN club to fundraise for Project Restore Honduras — a multi-channel campaign spanning video, email, social media, and on-campus donation drives.</p>
+      <p class="fdo-body" style="margin-top:0.75rem;">As KAS students, we recognised the privilege of being largely insulated from the pandemic's worst effects — and used that as motivation to help communities facing a very different reality. The campaign was built around the message: <em>"Your contribution, many solutions."</em></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+        <img src="honduras/donations.png" alt="Honduras donation drive boxes" style="width:100%;border-radius:10px;object-fit:cover;">
+        <img src="honduras/caption.png" alt="Project Honduras campaign post" style="width:100%;border-radius:10px;object-fit:cover;">
+      </div>
+    ` },
+    'proj-ecobricks': { richHtml: `
+      <p class="fdo-eyebrow">Global Issues Network · Taiwanderful Organization</p>
+      <h2 class="fdo-title">Eco-Bricks Community Workshop</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Role</span><span class="fdo-meta-val">KAS GIN Club — Workshop Organiser</span></div>
+        <div><span class="fdo-meta-label">Period</span><span class="fdo-meta-val">Oct – Nov 2020 · Kaohsiung, Taiwan</span></div>
+        <div><span class="fdo-meta-label">Outcome</span><span class="fdo-meta-val">~50 ecobricks donated to Taiwanderful's environmental programs</span></div>
+      </div>
+      <img src="ecobricks/about.png" alt="All About Eco Bricks — KAS GIN 2020" class="fdo-hero">
+      <h3 class="fdo-section-heading">The Workshop</h3>
+      <p class="fdo-body">Organised a community workshop teaching participants how to convert unrecyclable plastic waste into ecobricks — densely packed plastic bottles that can be used as sustainable building materials. The initiative diverted plastic from landfill while creating tangible, usable output: ~50 completed ecobricks donated to Taiwanderful's environmental programs.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+        <img src="ecobricks/packed.png" alt="Packed ecobricks ready for donation" style="width:100%;border-radius:10px;object-fit:cover;">
+        <img src="ecobricks/info.png" alt="Prevent plastic pollution with the ecobrick — KAS GIN" style="width:100%;border-radius:10px;object-fit:cover;">
+      </div>
+    ` },
+    'proj-hite': { richHtml: `
+      <p class="fdo-eyebrow">Market Entry Strategy · Hite Kwang Jang Brewery</p>
+      <h2 class="fdo-title">Hite Kwang Jang Brewery</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Type</span><span class="fdo-meta-val">Market Entry &amp; Business Simulation</span></div>
+        <div><span class="fdo-meta-label">Location</span><span class="fdo-meta-val">Los Angeles, CA — Koreatown</span></div>
+        <div><span class="fdo-meta-label">Team</span><span class="fdo-meta-val">Huiwei Pang · Stephanie Widjaja · Qianhui Liu · Yijia Tai</span></div>
+        <div><span class="fdo-meta-label">Analyses</span><span class="fdo-meta-val">SWOT · PESTEL · 4Ps · Break-even · What-if · Operations · Innovation &amp; Tech · HR</span></div>
+        <div><span class="fdo-meta-label">Year</span><span class="fdo-meta-val">2024</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">Go</span><span class="fdo-stat-l"> final recommendation</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">5 months</span><span class="fdo-stat-l"> break-even projected</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">$2.59M</span><span class="fdo-stat-l"> 3-year projected profit</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">50%</span><span class="fdo-stat-l"> profit margin</span></div>
+      </div>
+      <p class="fdo-body">Full two-phase business simulation advising a Korean restaurant in LA's Koreatown on expanding into a craft microbrewery. TTP1 covered market analysis (SWOT, PESTEL, 4Ps), competitive positioning, and a $100K year-one marketing budget spanning digital, event, and in-venue channels — built around the craft beer × Korean fried chicken pairing as the core brand hook. TTP2 extended into operations, innovation &amp; tech, and HR management, with distribution models across direct in-restaurant sales and licensed wholesalers. Financial projections showed 3-year revenue growth from $2.14M to $2.42M, 50% profit margins, and a break-even within 5 months — yielding a firm go recommendation.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Positioning Strategy</span>
+        <p class="fdo-finding-title">Craft beer × Korean fried chicken — owning a cultural pairing</p>
+        <p class="fdo-body">Rather than positioning as a generic craft brewery, the strategy centred on a single ownable insight: Korean fried chicken and beer (chimaek) is one of the most beloved cultural pairings in Korean food culture. By building the brand around this, Hite Kwang Jang becomes not just a brewery but an experience — authentically rooted, culturally specific, and differentiated from every other craft taproom in LA.</p>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Target Audience</span>
+        <p class="fdo-finding-title">Korean-American community + LA's craft beer enthusiasts</p>
+        <p class="fdo-body">Two audiences, one venue: existing restaurant regulars (Korean-American community seeking authentic cultural dining) and LA's craft beer segment seeking differentiated experiences. The dual appeal supports both in-restaurant volume and wholesale distribution — each reinforcing the other's reach.</p>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">$100K Marketing Budget — Year One</span>
+        <p class="fdo-finding-title">Three channels, one story</p>
+        <ul class="fdo-rec-list">
+          <li>Digital (40%): social media targeting Korean-American and craft beer communities, influencer seeding, Google Ads</li>
+          <li>Events (35%): launch event, chimaek pop-up nights, Koreatown food festival presence</li>
+          <li>In-venue (25%): menu storytelling, staff-guided tasting flights, beer × food pairing guides</li>
+        </ul>
+      </div>
+
+      <div class="fdo-slides">
+        <div class="fdo-slides-track">
+          <img id="hite-img" src="hite%20kwang%20jang/slide-01.png" alt="Slide 1 of 18">
+        </div>
+        <div class="fdo-slides-nav">
+          <button class="fdo-slides-btn" id="hite-prev" aria-label="Previous slide">&#8592;</button>
+          <span class="fdo-slides-counter"><span id="hite-cur">1</span> / 87</span>
+          <button class="fdo-slides-btn" id="hite-next" aria-label="Next slide">&#8594;</button>
+        </div>
+      </div>
+    ` },
+    'proj-ba': { richHtml: `
+      <p class="fdo-eyebrow">Brand Strategy · Partnership Proposal · British Airways</p>
+      <h2 class="fdo-title">British Airways × Royal Horticultural Society</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Type</span><span class="fdo-meta-val">Sustainability Partnership Proposal</span></div>
+        <div><span class="fdo-meta-label">Framework</span><span class="fdo-meta-val">BA Better World — People, Planet, Business</span></div>
+        <div><span class="fdo-meta-label">Format</span><span class="fdo-meta-val">Solo Project</span></div>
+        <div><span class="fdo-meta-label">Year</span><span class="fdo-meta-val">2024</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">5-year</span><span class="fdo-stat-l"> proposed partnership</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">3</span><span class="fdo-stat-l"> goal pillars aligned</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">RHS</span><span class="fdo-stat-l"> climate positive by 2030</span></div>
+      </div>
+      <p class="fdo-body">Proposed a 5-year partnership between British Airways and the Royal Horticultural Society under the BA Better World framework. Mapped shared sustainability goals across people, planet, and business pillars — including RHS's climate-positive, biodiversity-positive, and circular plastic missions — and outlined a full marketing strategy, engagement metrics, and long-term brand benefits for both organisations.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Strategic Rationale</span>
+        <p class="fdo-finding-title">Why a charity partnership outperforms in-house sustainability comms</p>
+        <p class="fdo-body">Airlines face inherent credibility challenges when self-reporting on sustainability. Partnering with the RHS — a 220-year-old institution with deep environmental credibility — transfers that trust to BA. The strategy turns BA's sustainability narrative from a PR exercise into a verifiable, third-party-endorsed commitment, credible to both consumers and industry stakeholders.</p>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Marketing Activation</span>
+        <p class="fdo-finding-title">Three-objective strategy: awareness, engagement, education</p>
+        <ul class="fdo-rec-list">
+          <li>Awareness: social media reels and TikToks, behind-the-scenes at RHS gardens and flower shows, in-flight announcement pre-roll, minimum 2 posts/week</li>
+          <li>Engagement: air miles → charity donation mechanic, interactive polls, giveaways, RHS show ticket prizes for loyalty members</li>
+          <li>Education: short-form video series on horticulture + conservation; influencer and celebrity co-creation to widen reach</li>
+        </ul>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Metrics Framework</span>
+        <p class="fdo-finding-title">Reach, engagement, and conversion tracked across all touchpoints</p>
+        <p class="fdo-body">Defined KPIs mapped to each objective: followers, shares, reach, impressions, mentions (awareness); % engagement, likes, comments, CTR (engagement); conversion rates and ROI (education effectiveness). Data-driven optimisation through analytics tools to refine audience targeting across the 5-year partnership horizon.</p>
+      </div>
+
+      <div class="fdo-slides">
+        <div class="fdo-slides-track">
+          <img id="ba-img" src="british%20airways/page-01.png" alt="Slide 1 of 13">
+        </div>
+        <div class="fdo-slides-nav">
+          <button class="fdo-slides-btn" id="ba-prev" aria-label="Previous slide">&#8592;</button>
+          <span class="fdo-slides-counter"><span id="ba-cur">1</span> / 13</span>
+          <button class="fdo-slides-btn" id="ba-next" aria-label="Next slide">&#8594;</button>
+        </div>
+      </div>
+    ` },
+    'proj-hunger': { richHtml: `
+      <p class="fdo-eyebrow">Product &amp; Project Management · Hunger Fighters</p>
+      <h2 class="fdo-title">Hunger Fighters</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Type</span><span class="fdo-meta-val">End-to-End Product Plan · Social Impact App</span></div>
+        <div><span class="fdo-meta-label">Role</span><span class="fdo-meta-val">Head of Marketing · Team MSS</span></div>
+        <div><span class="fdo-meta-label">Team</span><span class="fdo-meta-val">Mamoun Bennouna · Seraj Alzaher · Stephanie Widjaja</span></div>
+        <div><span class="fdo-meta-label">Sponsor</span><span class="fdo-meta-val">Eric Hodel, CEO — Midwest Food Bank</span></div>
+        <div><span class="fdo-meta-label">Duration</span><span class="fdo-meta-val">Feb – Apr 2025 · 3 months</span></div>
+        <div><span class="fdo-meta-label">Deliverables</span><span class="fdo-meta-val">Project Charter · WBS · Network Diagram · Gantt · Risk Register · Stakeholder Register · App Mockup</span></div>
+        <div><span class="fdo-meta-label">Year</span><span class="fdo-meta-val">2025</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">$152,796</span><span class="fdo-stat-l"> project cost baseline</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">6</span><span class="fdo-stat-l"> project phases</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">P2P</span><span class="fdo-stat-l"> food rescue model</span></div>
+      </div>
+      <p class="fdo-body">End-to-end project plan for a peer-to-peer food rescue app connecting restaurants and grocery stores with food banks, sponsored by Midwest Food Bank CEO Eric Hodel. As Head of Marketing for Team MSS, I led across all six phases — Initiation, Planning, Design, Development, Testing, and Launch — delivering a full project charter, WBS, network diagram, milestone schedule, Gantt chart, risk register with heat map, and stakeholder register. The app was scoped for App Store and Google Play launch with a $152,796 cost baseline, measurable social impact metrics, and a scalable P2P model designed to reduce food waste while addressing food insecurity at a community level.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">My Marketing Contribution</span>
+        <p class="fdo-finding-title">Positioning, stakeholder comms, and app UX direction</p>
+        <p class="fdo-body">As Head of Marketing, I defined the brand voice and value proposition for both sides of the platform — food donors (restaurants and grocery stores) and recipients (food banks). This meant crafting two distinct messaging strategies for a single product: donors motivated by waste reduction and CSR, food banks motivated by supply reliability and operational simplicity. I also contributed to the app mockup design with a focus on user flow and CTA clarity, and owned the stakeholder communication plan.</p>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Dual-Sided Market Strategy</span>
+        <p class="fdo-finding-title">Two audiences, one platform — the challenge of marketplace positioning</p>
+        <p class="fdo-body">Marketplace apps live or die on the balance between supply and demand. Our go-to-market strategy tackled both sides simultaneously: seeding supply through direct outreach to local restaurants and grocers, and building demand credibility through the Midwest Food Bank sponsorship. The social impact angle unified both audiences under a shared purpose — making the brand feel mission-driven rather than transactional.</p>
+      </div>
+
+      <div class="fdo-slides">
+        <div class="fdo-slides-track">
+          <img id="hf-img" src="hunger%20fighters/slide-01.png" alt="Slide 1 of 20">
+        </div>
+        <div class="fdo-slides-nav">
+          <button class="fdo-slides-btn" id="hf-prev" aria-label="Previous slide">&#8592;</button>
+          <span class="fdo-slides-counter"><span id="hf-cur">1</span> / 55</span>
+          <button class="fdo-slides-btn" id="hf-next" aria-label="Next slide">&#8594;</button>
+        </div>
+      </div>
+    ` },
+    'proj-fuelwise': { richHtml: `
+      <p class="fdo-eyebrow">Product Strategy &amp; Marketing · FuelWise</p>
+      <h2 class="fdo-title">FuelWise</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Type</span><span class="fdo-meta-val">Product Concept · Go-to-Market Strategy</span></div>
+        <div><span class="fdo-meta-label">Technology</span><span class="fdo-meta-val">Nutrigenomics + AI Personalization</span></div>
+        <div><span class="fdo-meta-label">Team</span><span class="fdo-meta-val">Stephanie Widjaja, Liliana Flores, Gabriel Gomez</span></div>
+        <div><span class="fdo-meta-label">Year</span><span class="fdo-meta-val">2025</span></div>
+      </div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <div class="fdo-stat"><span class="fdo-stat-n">$257B</span><span class="fdo-stat-l"> market projected by 2025</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">2.5B+</span><span class="fdo-stat-l"> overweight adults globally</span></div>
+        <div class="fdo-stat"><span class="fdo-stat-n">$375K</span><span class="fdo-stat-l"> angel investment target</span></div>
+      </div>
+      <p class="fdo-body">Product concept and go-to-market strategy for a personalized nutrition platform combining nutrigenomics and AI to deliver adaptive meal plans. Targeting health-conscious professionals and individuals managing conditions like diabetes and obesity — validated through NPS and WOW testing frameworks. Includes customer profiling, competitive gap analysis versus HelloFresh, Noom, and MyFitnessPal, a full business model canvas, scalability roadmap, and a $250K–$500K angel investment pitch.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Customer Insight</span>
+        <p class="fdo-finding-title">Two personas, two completely different buying motivations</p>
+        <p class="fdo-body">Built two primary customer personas: Anna (28, accountant, fitness-first — struggles to find a meal plan that fits her specific workout goals and lacks time to grocery shop) and Carla (50, nurse, Type 2 Diabetes — overwhelmed by dietary restrictions and first-time dieter with no support system). Product strategy, pricing tier, and messaging differ meaningfully for each: Anna is driven by performance optimisation; Carla by medical necessity and peace of mind.</p>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--critical">Competitive Positioning</span>
+        <p class="fdo-finding-title">Not a meal kit. Not a tracker. An affordable nutritionist.</p>
+        <p class="fdo-body">Competitive mapping showed a clear gap: HelloFresh delivers convenience but zero personalisation; Noom adds behavioural science but no genetic layer; MyFitnessPal is self-directed with no meal generation. FuelWise's positioning — nutrigenomics + AI creating plans that adapt over time — lands it as the affordable alternative to a personal nutritionist ($50–$100/month vs. $150–$300/session), making a premium health category accessible.</p>
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Market Validation</span>
+        <p class="fdo-finding-title">NPS + WOW testing — building confidence before launch</p>
+        <p class="fdo-body">Designed a two-stage validation approach: WOW testing to gauge first-impression impact (Promoter: "completely exceeded expectations"; Passive: "has potential to be truly great"; Detractor: "felt generic") and NPS scoring across six dimensions — recommendation likelihood, satisfaction, expectation fit, retention intent, integration ease, and confidence in recommendation accuracy. Both frameworks test for product-market fit before any acquisition spend.</p>
+      </div>
+
+      <div class="fdo-slides">
+        <div class="fdo-slides-track">
+          <img id="fw-img" src="fuelwise/slide-003.png" alt="Slide 1 of 27">
+        </div>
+        <div class="fdo-slides-nav">
+          <button class="fdo-slides-btn" id="fw-prev" aria-label="Previous slide">&#8592;</button>
+          <span class="fdo-slides-counter"><span id="fw-cur">1</span>&thinsp;/&thinsp;27</span>
+          <button class="fdo-slides-btn" id="fw-next" aria-label="Next slide">&#8594;</button>
+        </div>
+      </div>
+    ` },
+    'proj-plastic': { richHtml: `
+      <p class="fdo-eyebrow">Global Issues Network · Kaohsiung American School</p>
+      <h2 class="fdo-title">Project Plastic: LEED the Way</h2>
+      <div class="fdo-meta">
+        <div><span class="fdo-meta-label">Role</span><span class="fdo-meta-val">KAS GIN Club — Lead Initiative</span></div>
+        <div><span class="fdo-meta-label">Period</span><span class="fdo-meta-val">Feb 2018 – Oct 2018 · Kaohsiung, Taiwan</span></div>
+        <div><span class="fdo-meta-label">Outcome</span><span class="fdo-meta-val">~150 reusable straws sold · Zero Plastic Lunch Day · Improved campus recycling</span></div>
+      </div>
+
+      <h3 class="fdo-section-heading">The Initiative</h3>
+      <p class="fdo-body">As a LEED-certified school, Kaohsiung American School had a mandate to minimise environmental impact — but the GIN club identified a gap: the campus was still supplying and normalising single-use plastic. Project Plastic was our response. We submitted a formal proposal to school administration, ran reusable product campaigns, and organised a school-wide Zero Plastic Lunch Day to shift behaviour and build awareness.</p>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Campaign Design</span>
+        <p class="fdo-finding-title">#TheLastStraw — KAS GIN Club</p>
+        <p class="fdo-body">A hand-illustrated campaign graphic anchored to the #TheLastStraw movement — using raw, hand-drawn aesthetics to make the anti-plastic message feel grassroots and student-led rather than institutional.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+        <img src="plastic/kas-straw.png" alt="#TheLastStraw — KAS GIN Club" style="width:100%;border-radius:10px;object-fit:cover;background:#f4f4f2;">
+        <img src="plastic/kas-cup.png" alt="KAS GIN Reusable Cup Sale" style="width:100%;border-radius:10px;object-fit:cover;background:#f4f4f2;">
+      </div>
+
+      <div class="fdo-finding">
+        <span class="fdo-finding-badge fdo-finding-badge--moderate">Product Campaign</span>
+        <p class="fdo-finding-title">Reusable Cup Sale — @kas.gin</p>
+        <p class="fdo-body">Designed and ran a reusable cup sale at 350 NT/cup to fund the initiative and reduce disposable cup use on campus. Promoted via the club Instagram @kas.gin with hand-illustrated graphics that matched the campaign's DIY aesthetic.</p>
+      </div>
+    ` }
+  };
+
+  var fdCrumb  = document.getElementById('fdCrumb');
+  var fdBack   = document.getElementById('fdBack');
+  var fdCrumbName = document.getElementById('fdCrumbName');
+  var fdTop    = document.getElementById('fdTop');
+  var fdBibit  = document.getElementById('fdBibit');
+  var fdOverlay = document.getElementById('fdOverlay');
+  var fdOverlayCard = fdOverlay.querySelector('.fd-overlay-card');
+  var fdOverlayClose = document.getElementById('fdOverlayClose');
+  var fdOverlayContent = document.getElementById('fdOverlayContent');
+  var activeGrid = fdTop;
+
+  function animateIn(grid) {
+    grid.classList.remove('fd-in');
+    void grid.offsetWidth;
+    grid.classList.add('fd-in');
+  }
+
+  function showGrid(grid, label) {
+    activeGrid.classList.add('fd-grid--hidden');
+    grid.classList.remove('fd-grid--hidden');
+    animateIn(grid);
+    activeGrid = grid;
+    fdCrumbName.textContent = label;
+    fdCrumb.classList.add('fd-crumb--visible');
+  }
+
+  function goTop() {
+    activeGrid.classList.add('fd-grid--hidden');
+    fdTop.classList.remove('fd-grid--hidden');
+    animateIn(fdTop);
+    activeGrid = fdTop;
+    fdCrumb.classList.remove('fd-crumb--visible');
+  }
+
+  function openCase(id) {
+    var d = cases[id];
+    if (!d) return;
+    if (d.richHtml) {
+      fdOverlayCard.classList.add('fd-overlay-card--wide');
+      fdOverlayContent.innerHTML = d.richHtml;
+    } else {
+      fdOverlayCard.classList.remove('fd-overlay-card--wide');
+      fdOverlayContent.innerHTML =
+        '<p class="fdo-eyebrow">' + d.org + '</p>' +
+        '<h2 class="fdo-title">' + d.title + '</h2>' +
+        '<div class="fdo-meta">' +
+          '<div><span class="fdo-meta-label">Period</span><span class="fdo-meta-val">' + d.date + '</span></div>' +
+          '<div><span class="fdo-meta-label">Location</span><span class="fdo-meta-val">' + d.location + '</span></div>' +
+        '</div>' +
+        '<div class="fdo-stat"><span class="fdo-stat-n">' + d.metric + '</span><span class="fdo-stat-l"> ' + d.metricLabel + '</span></div>' +
+        '<p class="fdo-body">' + d.body + '</p>';
+    }
+    fdOverlay.classList.add('fd-overlay--open');
+    fdOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    initSlides();
+    initHcbuTabs();
+  }
+
+  function initHcbuTabs() {
+    var tabs = document.querySelectorAll('.hcbu-tab');
+    var frame = document.getElementById('hcbuFrame');
+    if (!tabs.length || !frame) return;
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        frame.src = tab.dataset.src;
+      });
+    });
+  }
+
+  function initSlides() {
+    var img = document.getElementById('metSlideImg');
+    var cur = document.getElementById('metCur');
+    var prev = document.getElementById('metPrev');
+    var next = document.getElementById('metNext');
+    if (!img || !prev || !next) return;
+    var total = 10;
+    var idx = 1;
+    function goTo(n) {
+      idx = Math.min(Math.max(n, 1), total);
+      img.src = 'metabolics/slide-' + (idx < 10 ? '0' : '') + idx + '.png';
+      img.alt = 'Slide ' + idx + ' of ' + total;
+      cur.textContent = idx;
+    }
+    prev.addEventListener('click', function () { goTo(idx - 1); });
+    next.addEventListener('click', function () { goTo(idx + 1); });
+
+    function initProjectSlides(prefix, base, total, pad, offset) {
+      var pImg = document.getElementById(prefix + '-img');
+      var pCur = document.getElementById(prefix + '-cur');
+      var pPrev = document.getElementById(prefix + '-prev');
+      var pNext = document.getElementById(prefix + '-next');
+      if (!pImg) return;
+      var pIdx = 1;
+      var off = offset || 0;
+      function fmt(n) { return pad ? (n < 10 ? '0' + n : '' + n) : '' + n; }
+      function pGoTo(n) {
+        pIdx = Math.min(Math.max(n, 1), total);
+        pImg.src = base + fmt(pIdx + off) + '.png';
+        pImg.alt = 'Slide ' + pIdx + ' of ' + total;
+        if (pCur) pCur.textContent = pIdx;
+      }
+      if (pPrev) pPrev.addEventListener('click', function () { pGoTo(pIdx - 1); });
+      if (pNext) pNext.addEventListener('click', function () { pGoTo(pIdx + 1); });
+    }
+
+    initProjectSlides('hite', 'hite%20kwang%20jang/page-', 87, true);
+    initProjectSlides('ba', 'british%20airways/page-', 13, true);
+    initProjectSlides('hf', 'hunger%20fighters/page-', 55, true);
+    initProjectSlides('fw', 'fuelwise/slide-', 27, true, 2);
+  }
+
+  function closeOverlay() {
+    fdOverlay.classList.remove('fd-overlay--open');
+    fdOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    fdOverlayCard.classList.remove('fd-overlay-card--wide');
+  }
+
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('.fd-card, .cs-card');
+    if (card) {
+      var action = card.dataset.fdAction;
+      if (action === 'drill') {
+        var target = document.getElementById(card.dataset.fdTarget);
+        if (target) showGrid(target, card.dataset.fdLabel);
+      } else if (action === 'link') {
+        window.location.href = card.dataset.fdHref;
+      } else if (action === 'case') {
+        openCase(card.dataset.fdCase);
+      }
+      return;
+    }
+    if (e.target === fdOverlay) closeOverlay();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      var card = document.activeElement && document.activeElement.closest('.fd-card, .cs-card');
+      if (card) { e.preventDefault(); card.click(); }
+    }
+    if (e.key === 'Escape') closeOverlay();
+  });
+
+  fdBack.addEventListener('click', goTop);
+  fdOverlayClose.addEventListener('click', closeOverlay);
+})();
+
+// Project carousel
+(function () {
+  var viewport = document.querySelector('.proj-viewport');
+  var track    = document.getElementById('projTrack');
+  var prevBtn  = document.getElementById('projPrev');
+  var nextBtn  = document.getElementById('projNext');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  var idx = 0;
+
+  function gap() { return 24; } // 1.5rem
+
+  function cardW() {
+    var c = track.querySelector('.cs-card');
+    return c ? c.offsetWidth + gap() : 0;
+  }
+
+  function visible() {
+    if (!viewport || !cardW()) return 3;
+    return Math.max(1, Math.floor((viewport.offsetWidth + gap()) / cardW()));
+  }
+
+  function total() {
+    return track.querySelectorAll('.cs-card').length;
+  }
+
+  function maxIdx() {
+    return Math.max(0, total() - visible());
+  }
+
+  function render() {
+    track.style.transform = 'translateX(-' + (idx * cardW()) + 'px)';
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx >= maxIdx();
+  }
+
+  prevBtn.addEventListener('click', function () { idx = Math.max(0, idx - 1); render(); });
+  nextBtn.addEventListener('click', function () { idx = Math.min(maxIdx(), idx + 1); render(); });
+
+  window.addEventListener('resize', function () { idx = Math.min(idx, maxIdx()); render(); });
+
+  render();
+})();
+
+
+</script>
+
+</body>
+</html>

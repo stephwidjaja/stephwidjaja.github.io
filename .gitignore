@@ -1,0 +1,11 @@
+# Source files not needed for the website
+*.pdf
+*.pptx
+fuelwise/pptx_export/
+food3888/
+
+# Screenshots
+Screenshot*.png
+
+# System files
+.DS_Store

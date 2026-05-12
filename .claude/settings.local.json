@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:sierrahopkins.com)",
+      "WebFetch(domain:stephwidjaja.github.io)",
+      "Bash(brew install *)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/rotary /final report rotary - Google Docs.pdf\" -)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/rotary /ROTARY PLAN ASSIGNMENT - Google Docs.pdf\" -)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/rotary /Rotary Final Report.pdf\" -)",
+      "Bash(sips -s format jpeg /Users/stephaniewidjaja/Downloads/IMG_5977.heic --out /tmp/IMG_5977.jpg)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Downloads/3888 Project Report Draft - Google Docs.pdf\" -)",
+      "Bash(xargs ls -lt)",
+      "Bash(cp \"/var/folders/83/fbvpl6n12v78z63zsj17g6_80000gn/T/TemporaryItems/NSIRD_screencaptureui_O5G02M/Screenshot 2026-05-11 at 8.00.37 PM.png\" \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/dimnpeh-bag.png\")",
+      "Bash(cp \"/var/folders/83/fbvpl6n12v78z63zsj17g6_80000gn/T/TemporaryItems/NSIRD_screencaptureui_vrxKZG/Screenshot 2026-05-11 at 8.00.29 PM.png\" \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/dimnpeh-concept.png\")",
+      "Bash(cp \"/var/folders/83/fbvpl6n12v78z63zsj17g6_80000gn/T/TemporaryItems/NSIRD_screencaptureui_PV3UXx/Screenshot 2026-05-11 at 8.05.31 PM.png\" \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/dimnpeh-bag.png\")",
+      "Bash(cp \"/var/folders/83/fbvpl6n12v78z63zsj17g6_80000gn/T/TemporaryItems/NSIRD_screencaptureui_0TnSTc/Screenshot 2026-05-11 at 8.05.41 PM.png\" \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/dimnpeh-concept.png\")",
+      "Bash(cp \"/Users/stephaniewidjaja/Desktop/Screenshot 2026-05-11 at 8.08.04 PM.png\" \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/dimnpeh-concept.png\")",
+      "Bash(cp \"/Users/stephaniewidjaja/Desktop/Screenshot 2026-05-11 at 8.08.12 PM.png\" \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/dimnpeh-bag.png\")",
+      "Bash(xattr -l \"/Users/stephaniewidjaja/Desktop/Screenshot 2026-05-11 at 8.08.04 PM.png\")",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/metabolics/Manuscript Final Report Project 1 - Google Docs.pdf\" -)",
+      "Bash(pdftoppm -r 120 \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/metabolics/Group10_oral - Presentation.pdf\" \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/metabolics/slide\" -png)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/bibit/bibit x mine /Bibit Perfume 2024 GTM.pdf\" -)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/bibit/bibit x mine /perfume deck for external brief.pdf\" -)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/bibit/bibit x mine /Bibit Perfume 2024 Pop Up Installation.pdf\" -)",
+      "Bash(python3 -c ' *)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/bibit/bibit padel/[All] Bibit Stockbit Open - Technical Book.pdf\" -)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/bibit/bibit pilates/STOCKBIBIT Pilates intro deck.pdf\" -)",
+      "Bash(pdftotext \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/bibit/art jakarta/Art Jakarta 2024_Technical Meeting \\(1\\) \\(dragged\\).pdf\" -)",
+      "Bash(python3 *)",
+      "Bash(qlmanage -t -s 2048 -o /tmp/fw_ql/ \"/Users/stephaniewidjaja/Desktop/widjaja-portfolio/fuelwise/AD741_Team2_ Final Presentation.pptx\")"
+    ]
+  }
+}

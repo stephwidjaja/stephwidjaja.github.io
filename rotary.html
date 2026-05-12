@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotary International — Stephanie Widjaja</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: 'Cavalhatriz';
+  src: url('Cavalhatriz/Cavalhatriz.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Garet';
+  src: url('Garet-Book.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Garet';
+  src: url('Garet-Heavy.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+.si {
+  opacity: 0; translate: 0 40px;
+  transition: opacity 0.6s cubic-bezier(0.34,1.56,0.64,1),
+              translate 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+.si.on { opacity: 1; translate: 0 0; }
+
+:root {
+  --bg:     #FAFAF8;
+  --ink:    #1B1713;
+  --accent: #1A65FF;
+  --muted:  #8C8076;
+  --border: rgba(27,23,19,0.11);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, auto;
+}
+a, button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, pointer; }
+
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV ── */
+#nav {
+  position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%);
+  z-index: 200; width: auto; max-width: calc(100vw - 2rem);
+}
+.nav-pill {
+  display: flex; align-items: center; gap: 2.5rem;
+  background: rgba(250,250,248,0.55);
+  backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-bottom-color: rgba(27,23,19,0.08);
+  border-radius: 999px; padding: 0.7rem 2rem;
+  box-shadow: 0 2px 16px rgba(27,23,19,0.07), inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: box-shadow 0.35s, background 0.35s;
+}
+#nav.is-scrolled .nav-pill {
+  background: rgba(250,250,248,0.72);
+  box-shadow: 0 4px 28px rgba(27,23,19,0.11), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.nav-mark { font-family: 'Cavalhatriz', serif; font-weight: 500; font-size: 1.4rem; color: var(--ink); padding: 0 0.2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; flex: 1; }
+.nav-links:first-child { justify-content: flex-end; }
+.nav-links:last-child  { justify-content: flex-start; }
+.nav-links a {
+  font-family: 'Inter Tight', sans-serif; font-size: 1.05rem;
+  font-variant-caps: all-small-caps; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+/* ── PAGE WRAP ── */
+.page-wrap {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  column-gap: 4.5rem;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: clamp(7rem, 12vw, 10rem) clamp(1.5rem, 4vw, 3rem) clamp(5rem, 8vw, 7rem);
+  align-items: start;
+}
+
+/* ── SIDEBAR ── */
+.doc-sidebar {
+  position: sticky;
+  top: 6rem;
+}
+
+.doc-back {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'Inter Tight', sans-serif; font-size: 0.75rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 2rem; transition: color 0.2s;
+}
+.doc-back:hover { color: var(--accent); }
+.doc-back::before { content: '←'; }
+
+.doc-sidebar-label {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.3rem; display: block;
+}
+.doc-sidebar-title {
+  font-family: 'Instrument Serif', serif; font-size: 0.92rem;
+  color: var(--ink); line-height: 1.4; margin-bottom: 2rem;
+}
+
+.doc-toc-label {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.6rem; display: block;
+}
+.doc-toc ol {
+  list-style: none; display: flex; flex-direction: column; gap: 0;
+  counter-reset: toc;
+}
+.doc-toc ol li { counter-increment: toc; display: flex; align-items: baseline; gap: 0.5rem; }
+.doc-toc ol li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: 'Instrument Serif', serif; font-size: 0.72rem;
+  color: rgba(27,23,19,0.18); min-width: 1.6rem;
+}
+.doc-toc ol li a {
+  font-family: 'Garet', sans-serif; font-size: 0.82rem; color: var(--muted);
+  transition: color 0.18s; padding: 0.25rem 0; display: block;
+}
+.doc-toc ol li a:hover { color: var(--ink); }
+.doc-toc ol li a.is-active { color: var(--ink); }
+
+/* ── MAIN CONTENT ── */
+.doc-main { min-width: 0; }
+
+/* ── HEADER ── */
+.doc-eyebrow {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+}
+.doc-title {
+  font-family: 'Instrument Serif', serif; font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 1.25rem;
+}
+.doc-tagline {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: clamp(1rem, 1.6vw, 1.1rem); color: var(--muted);
+  line-height: 1.55; margin-bottom: 2.5rem; max-width: 54ch;
+}
+
+/* ── METADATA ── */
+.doc-meta {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1.25rem 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+.doc-meta-label {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.3rem; display: block;
+}
+.doc-meta-val {
+  font-family: 'Garet', sans-serif; font-size: 0.86rem; color: var(--ink);
+  line-height: 1.4;
+}
+
+/* ── STAT ROW ── */
+.doc-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 10px;
+  overflow: hidden; margin: 1.75rem 0;
+}
+.doc-stat {
+  background: var(--bg); padding: 1.25rem 1rem; text-align: center;
+}
+.doc-stat-num {
+  font-family: 'Instrument Serif', serif; font-size: 2rem;
+  color: var(--accent); line-height: 1; display: block; margin-bottom: 0.3rem;
+}
+.doc-stat-label {
+  font-family: 'Garet', sans-serif; font-size: 0.76rem; color: var(--muted); line-height: 1.4;
+}
+
+/* ── DIVIDER ── */
+.doc-rule { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+/* ── SECTION ── */
+.doc-section { margin-bottom: 3rem; }
+.doc-section-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 0.78rem; color: rgba(27,23,19,0.22);
+  display: block; margin-bottom: 0.35rem;
+}
+.doc-section-title {
+  font-family: 'Instrument Serif', serif; font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 400; color: var(--ink); margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+}
+.doc-p {
+  font-family: 'Garet', sans-serif; font-size: 0.92rem; color: #3C3830;
+  line-height: 1.85; margin-bottom: 1.1rem;
+}
+.doc-p:last-child { margin-bottom: 0; }
+
+/* ── NUMBERED LIST (challenges/objectives) ── */
+.doc-numbered { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+.doc-numbered-item { display: flex; gap: 1.25rem; align-items: flex-start; }
+.doc-numbered-n {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 2rem; line-height: 1; color: rgba(27,23,19,0.15);
+  min-width: 2.5rem; padding-top: 0.1rem; flex-shrink: 0;
+}
+.doc-numbered-title {
+  font-family: 'Instrument Serif', serif; font-size: 1.05rem;
+  color: var(--ink); margin-bottom: 0.3rem;
+}
+.doc-numbered-desc {
+  font-family: 'Garet', sans-serif; font-size: 0.86rem;
+  color: var(--muted); line-height: 1.7;
+}
+
+/* ── RESEARCH QUESTION ROWS ── */
+.doc-steps { display: flex; flex-direction: column; gap: 0; margin-top: 1.25rem; }
+.doc-step {
+  display: flex; gap: 1.25rem; padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.doc-step:first-child { border-top: 1px solid var(--border); }
+.doc-step-tag {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); min-width: 110px; padding-top: 0.2rem; flex-shrink: 0;
+}
+.doc-step-text {
+  font-family: 'Garet', sans-serif; font-size: 0.88rem; color: #3C3830; line-height: 1.7;
+}
+
+/* ── FINDING CARDS ── */
+.doc-findings { display: flex; flex-direction: column; gap: 0; margin-top: 1.25rem; }
+.doc-finding {
+  padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+}
+.doc-finding:first-child { border-top: 1px solid var(--border); }
+.doc-finding-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.75rem; }
+.doc-finding-label {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--accent); color: #fff;
+  padding: 0.15rem 0.6rem; border-radius: 999px; flex-shrink: 0;
+}
+.doc-finding-label--mod {
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border);
+}
+.doc-finding-title {
+  font-family: 'Instrument Serif', serif; font-size: 1.1rem; color: var(--ink);
+}
+.doc-finding-body {
+  font-family: 'Garet', sans-serif; font-size: 0.88rem; color: #3C3830; line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+
+/* ── BLOCKQUOTE ── */
+blockquote.doc-quote {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--border);
+}
+blockquote.doc-quote p {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 1rem; color: var(--ink); line-height: 1.6; margin-bottom: 0.3rem;
+}
+blockquote.doc-quote cite {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.72rem;
+  color: var(--muted); font-style: normal; letter-spacing: 0.04em;
+}
+
+/* ── FRAMEWORK CARD ── */
+.doc-tiers { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+.doc-tier {
+  display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem;
+  padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px;
+  background: rgba(27,23,19,0.02);
+}
+.doc-tier-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 1.6rem; line-height: 1; color: var(--accent);
+}
+.doc-tier-title {
+  font-family: 'Instrument Serif', serif; font-size: 1rem;
+  color: var(--ink); margin-bottom: 0.3rem;
+}
+.doc-tier-desc {
+  font-family: 'Garet', sans-serif; font-size: 0.84rem; color: var(--muted); line-height: 1.7;
+}
+
+/* ── IMPLEMENTATION TABLE ── */
+.doc-impl { margin-top: 1.5rem; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.doc-impl-row {
+  display: grid; grid-template-columns: 1fr 2fr 90px;
+  border-bottom: 1px solid var(--border);
+}
+.doc-impl-row:last-child { border-bottom: none; }
+.doc-impl-header { background: rgba(27,23,19,0.03); }
+.doc-impl-cell {
+  padding: 1rem 1.1rem;
+  font-family: 'Garet', sans-serif; font-size: 0.84rem; color: #3C3830; line-height: 1.65;
+  border-right: 1px solid var(--border);
+}
+.doc-impl-cell:last-child { border-right: none; }
+.doc-impl-header .doc-impl-cell {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.doc-impl-stage {
+  font-family: 'Instrument Serif', serif; font-size: 0.96rem;
+  color: var(--ink); line-height: 1.3; margin-bottom: 0.15rem;
+}
+.doc-impl-timeline {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.76rem;
+  color: var(--accent); font-weight: 500;
+}
+
+/* ── REFLECTION LIST ── */
+.doc-reflections { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.25rem; }
+.doc-reflection { display: flex; gap: 1rem; }
+.doc-reflection-bullet {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  margin-top: 0.55rem; flex-shrink: 0;
+}
+.doc-reflection-text {
+  font-family: 'Garet', sans-serif; font-size: 0.9rem; color: #3C3830; line-height: 1.8;
+}
+
+/* ── FOOTER ── */
+footer.mini-footer {
+  border-top: 1px solid var(--border); padding: 2rem clamp(1.5rem, 4vw, 3rem);
+  max-width: 1020px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer.mini-footer span { font-family: 'Inter Tight', sans-serif; font-size: 0.8rem; color: var(--muted); }
+footer.mini-footer a { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1rem; color: var(--accent); }
+footer.mini-footer a:hover { text-decoration: underline; }
+
+/* ── FLIPBOOK ── */
+.flipbook-wrap { margin-top: 1.75rem; }
+.flipbook-outer {
+  background: #e8e4de;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 180px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.flipbook-loading {
+  font-family: 'Garet', sans-serif; font-size: 0.84rem; color: var(--muted); text-align: center;
+}
+#flipbook { display: none; }
+.flipbook-controls {
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 1rem;
+}
+.flipbook-btn {
+  font-family: 'Inter Tight', sans-serif; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); background: none;
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.flipbook-btn:hover { color: var(--ink); border-color: rgba(27,23,19,0.35); }
+.flipbook-num { font-family: 'Garet', sans-serif; font-size: 0.8rem; color: var(--muted); min-width: 80px; text-align: center; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+  .page-wrap {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+  .doc-sidebar {
+    position: static;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  .doc-toc ol { flex-direction: row; flex-wrap: wrap; gap: 0.25rem 1rem; }
+  .doc-toc ol li::before { display: none; }
+  .doc-stats { grid-template-columns: 1fr; }
+  .doc-tier { grid-template-columns: 1fr; }
+  .doc-tier-num { font-size: 1.2rem; }
+  .doc-impl-row { grid-template-columns: 1fr; }
+  .doc-impl-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .doc-impl-cell:last-child { border-bottom: none; }
+  .doc-impl-header { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="si" role="navigation" aria-label="Main navigation">
+  <div class="nav-pill">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#work" class="active">Work</a></li>
+    </ul>
+    <a href="index.html" class="nav-mark">SW</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<div class="page-wrap">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="doc-sidebar si">
+    <a href="index.html#work" class="doc-back"> Back to Work</a>
+
+    <span class="doc-sidebar-label">Strategy &amp; Research</span>
+    <p class="doc-sidebar-title">Rotary International</p>
+
+    <nav class="doc-toc" aria-label="Page contents">
+      <span class="doc-toc-label">Contents</span>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#research">Research Design</a></li>
+        <li><a href="#findings">Key Findings</a></li>
+        <li><a href="#framework">The Framework</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+        <li><a href="#report">Full Report</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <div class="doc-main">
+
+    <!-- ── HEADER ── -->
+    <div class="si">
+      <p class="doc-eyebrow">Strategy &amp; Research · Rotary International</p>
+      <h1 class="doc-title">Young Women in Rotary:<br>A New Frontier in Mentorship</h1>
+      <p class="doc-tagline">A cross-disciplinary research project proposing a collective group mentorship framework to improve the engagement and retention of young women in Rotary International.</p>
+    </div>
+
+    <!-- ── METADATA ── -->
+    <div class="doc-meta si">
+      <div class="doc-meta-item">
+        <span class="doc-meta-label">Role</span>
+        <span class="doc-meta-val">Group Member — Significance, Timeline &amp; Implementation Plan</span>
+      </div>
+      <div class="doc-meta-item">
+        <span class="doc-meta-label">Duration</span>
+        <span class="doc-meta-val">5 months<br>Feb – Jun 2024</span>
+      </div>
+      <div class="doc-meta-item">
+        <span class="doc-meta-label">Team</span>
+        <span class="doc-meta-val">Group Taupe<br>6 members</span>
+      </div>
+      <div class="doc-meta-item">
+        <span class="doc-meta-label">Methods</span>
+        <span class="doc-meta-val">Desk research · Stakeholder analysis · Framework design</span>
+      </div>
+      <div class="doc-meta-item">
+        <span class="doc-meta-label">Deliverable</span>
+        <span class="doc-meta-val">Mentoring framework proposal (4,000 words)</span>
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── OVERVIEW ── -->
+    <div class="doc-section si" id="overview">
+      <span class="doc-section-num">01</span>
+      <h2 class="doc-section-title">Overview</h2>
+      <p class="doc-p">Rotary International is one of the world's most recognised humanitarian organisations — 1.2M+ members across 35,000+ clubs in 200 countries, guided by the mission of "service above self." Yet beneath that global footprint sits a structural problem: Rotary is ageing out. In Australia, the average member age has reached 71, and with 14 members leaving every day, the organisation urgently needs to engage the next generation.</p>
+      <p class="doc-p">The retention gap is most acute among young women. Only 23% of Rotary members globally are female, and women leave at disproportionately high rates — with exit interviews citing sexism, lack of respect, and a culture not designed for them. This project was commissioned to examine why, and to propose a concrete, implementable solution.</p>
+      <p class="doc-p">Undertaken as part of a cross-disciplinary university research cohort, our team of six — Group Taupe — produced a 4,000-word report analysing the root causes of young women's disengagement and proposing a collective group mentorship framework to address it. My contributions spanned establishing the project's significance, structuring the implementation timeline, and co-authoring the actionable steps section.</p>
+
+      <div class="doc-stats">
+        <div class="doc-stat">
+          <span class="doc-stat-num">23%</span>
+          <span class="doc-stat-label">of Rotary members are female</span>
+        </div>
+        <div class="doc-stat">
+          <span class="doc-stat-num">14/day</span>
+          <span class="doc-stat-label">members leave globally</span>
+        </div>
+        <div class="doc-stat">
+          <span class="doc-stat-num">2 yrs</span>
+          <span class="doc-stat-label">when women most commonly exit</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── THE PROBLEM ── -->
+    <div class="doc-section si" id="problem">
+      <span class="doc-section-num">02</span>
+      <h2 class="doc-section-title">The Problem</h2>
+      <p class="doc-p">Rotary's retention challenge is not simply demographic drift — it's structural. The organisation's culture, meeting formats, and communication were built around a membership profile that no longer reflects the world it aims to serve. Three pressure points consistently emerge across the data.</p>
+
+      <div class="doc-numbered">
+        <div class="doc-numbered-item">
+          <span class="doc-numbered-n">01</span>
+          <div>
+            <p class="doc-numbered-title">Young women leave at the two-year mark</p>
+            <p class="doc-numbered-desc">Despite a genuine "charitable impulse" (Bendapudi et al., 1996), young women disengage before finding their footing. The two-year exit point is consistent across districts, suggesting a structural — not personal — failure at the point of onboarding and early engagement.</p>
+          </div>
+        </div>
+        <div class="doc-numbered-item">
+          <span class="doc-numbered-n">02</span>
+          <div>
+            <p class="doc-numbered-title">Cultural and structural barriers deter participation</p>
+            <p class="doc-numbered-desc">Women's exit interviews from Rotary record experiences of "sexism, lack of respect and humiliation" (Joint Membership Chairs D9500/D9520, 2024). A lack of female representation in leadership creates a self-reinforcing cycle: women don't see a path, so they don't commit. Potential members are discouraged before they even join.</p>
+          </div>
+        </div>
+        <div class="doc-numbered-item">
+          <span class="doc-numbered-n">03</span>
+          <div>
+            <p class="doc-numbered-title">Young women's needs aren't being met</p>
+            <p class="doc-numbered-desc">Young women in Australia face higher rates of loneliness and anxiety than men (AIHW, 2023), and a non-linear career arc that creates confidence gaps (Women's Agenda, 2022). What they need — community, soft skills, career networking, a safe space — is precisely what Rotary's existing formats fail to provide. Traditional formal meetings don't offer the social connection or professional relevance young women are seeking.</p>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="doc-quote" style="margin-top: 2rem;">
+        <p>"[Rotary is] no longer attracting the young business people and professionals who started it."</p>
+        <cite>— Pulley, 2016</cite>
+      </blockquote>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── RESEARCH DESIGN ── -->
+    <div class="doc-section si" id="research">
+      <span class="doc-section-num">03</span>
+      <h2 class="doc-section-title">Research Design</h2>
+      <p class="doc-p">The project used an agile design thinking approach, guided by the 4S method (Garette et al., 2018) — empathise, define, ideate, prototype. Because Rotary's problem is inherently social and variable, a traditional linear approach would have been inadequate. We supplemented this with the RADAR method (Pilkington, 2020) to structure our research-to-recommendation pipeline.</p>
+      <p class="doc-p">Research was triangulated across five question areas, drawing on peer-reviewed literature, government and NGO reports, industry publications, ABS demographic data, and media analysis.</p>
+
+      <div class="doc-steps">
+        <div class="doc-step">
+          <span class="doc-step-tag">Research Q1</span>
+          <p class="doc-step-text">What programs have NGOs and Rotary put in place to engage youth — and why are they falling short?</p>
+        </div>
+        <div class="doc-step">
+          <span class="doc-step-tag">Research Q2</span>
+          <p class="doc-step-text">What reasons have women provided for not joining or for leaving Rotary?</p>
+        </div>
+        <div class="doc-step">
+          <span class="doc-step-tag">Research Q3</span>
+          <p class="doc-step-text">What are the experiences, needs, and pressures of young women in Australia today?</p>
+        </div>
+        <div class="doc-step">
+          <span class="doc-step-tag">Research Q4</span>
+          <p class="doc-step-text">How is Rotary perceived by the public — and what does its organisational identity communicate?</p>
+        </div>
+        <div class="doc-step">
+          <span class="doc-step-tag">Research Q5</span>
+          <p class="doc-step-text">What activities have organisations used successfully to develop career skills and build community in young women?</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── FINDINGS ── -->
+    <div class="doc-section si" id="findings">
+      <span class="doc-section-num">04</span>
+      <h2 class="doc-section-title">Key Findings</h2>
+      <p class="doc-p">Five research insights shaped our proposal. Together, they confirm that Rotary's problem is structural — not a lack of mission relevance, but a failure to translate that mission into an experience young women want to stay in.</p>
+
+      <div class="doc-findings">
+
+        <div class="doc-finding">
+          <div class="doc-finding-header">
+            <span class="doc-finding-label">Finding 1</span>
+            <h3 class="doc-finding-title">Existing youth programs are short-term and structurally weak</h3>
+          </div>
+          <p class="doc-finding-body">Rotary's current youth initiatives — Interact Club (12–18), RYLA, Youth Exchange, New Generation Service Exchange — are awareness-generating but retention-weak. Short-term programs don't support tight-knit community building, and programs targeting 12–18 year olds fail to create a compelling bridge into adult Rotary membership given the organisation's high time commitments and cost.</p>
+        </div>
+
+        <div class="doc-finding">
+          <div class="doc-finding-header">
+            <span class="doc-finding-label">Finding 2</span>
+            <h3 class="doc-finding-title">Women leave because of culture, not mission</h3>
+          </div>
+          <p class="doc-finding-body">A lack of representation in membership and leadership makes women feel marginalised. This is compounded by an absence of career advancement pathways, an organisational culture experienced as exclusionary, and communication that doesn't resonate with early-career professionals. Many potential members remain unaware of what Rotary can offer — and those who do join, leave.</p>
+          <blockquote class="doc-quote">
+            <p>"Sexism, lack of respect and humiliation."</p>
+            <cite>— Women's exit interviews from Rotary (Joint Membership Chairs D9500/D9520, 2024)</cite>
+          </blockquote>
+        </div>
+
+        <div class="doc-finding">
+          <div class="doc-finding-header">
+            <span class="doc-finding-label">Finding 3</span>
+            <h3 class="doc-finding-title">Young women need community, career skills, and belonging</h3>
+          </div>
+          <p class="doc-finding-body">Statistically, young women in Australia face higher rates of loneliness and anxiety than men, and are navigating increasingly non-linear career paths (AIHW, 2023; Women's Agenda, 2022). Female Rotary members have directly reported a desire for social events that align with women's interests — not just formal meetings. What they're looking for is "professional renewal for both mentee and mentor" in a safe, community-oriented setting (ACECQA, 2018).</p>
+        </div>
+
+        <div class="doc-finding">
+          <div class="doc-finding-header">
+            <span class="doc-finding-label--mod doc-finding-label">Finding 4</span>
+            <h3 class="doc-finding-title">Rotary's identity is admirable but its public perception is compromised</h3>
+          </div>
+          <p class="doc-finding-body">Rotary's stated values include diversity, equity, and inclusion — and their Four-Way Test acknowledges the need to challenge unconscious bias. But publicly broadcast incidents of sexist content (Seven News Riverina, 2021) have undermined trust with the very demographic they need to recruit. The aspiration exists; the execution hasn't caught up.</p>
+        </div>
+
+        <div class="doc-finding">
+          <div class="doc-finding-header">
+            <span class="doc-finding-label--mod doc-finding-label">Finding 5</span>
+            <h3 class="doc-finding-title">Mentorship and community-building activities drive retention</h3>
+          </div>
+          <p class="doc-finding-body">Career skills are built through internships, leadership training, mentoring, and applied real-world experience (Hart Research Associates, 2015). Community forms through membership, influence, reinforcement, and shared emotional connection (McMillan &amp; Chavis, 1986). Mentorship structures that create peer relationships and skill transfer are proven to meet both needs simultaneously — making them the most viable intervention point for Rotary.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── THE FRAMEWORK ── -->
+    <div class="doc-section si" id="framework">
+      <span class="doc-section-num">05</span>
+      <h2 class="doc-section-title">The Framework</h2>
+      <p class="doc-p">Our proposal: replace Rotary's traditional dyadic (one-to-one) mentoring model with a <strong>collective group mentorship framework</strong>. Collective mentorship (Dahlberg &amp; Byars-Winston, 2019) forms a network of multiple experienced mentors supporting multiple mentees — where mentees also act as peer mentors and reverse mentors.</p>
+      <p class="doc-p">In Rotary's context, this translates to a network of experienced Rotarians co-mentoring a cohort of newly joined women — matched by professional interest, meeting formally and informally, and building community through structured activities alongside traditional service work.</p>
+
+      <div class="doc-tiers">
+        <div class="doc-tier">
+          <span class="doc-tier-num">1</span>
+          <div>
+            <p class="doc-tier-title">Addresses women's need for community and belonging</p>
+            <p class="doc-tier-desc">Collective mentorship enables peer socialisation, psychosocial support, and friendship formation — directly countering the intimidation of formal one-on-one mentoring and the alienation of traditional male-dominated meeting culture. It creates a comfortable, interpersonal environment where women feel a sense of belonging.</p>
+          </div>
+        </div>
+        <div class="doc-tier">
+          <span class="doc-tier-num">2</span>
+          <div>
+            <p class="doc-tier-title">Delivers diverse career skills and professional development</p>
+            <p class="doc-tier-desc">A single mentor can't meet all a mentee's varied needs. A group of interdisciplinary mentors — across marketing, finance, healthcare, education, technology — offers a range of perspectives and expertise. Peer discussion mitigates groupthink; reverse mentoring creates a feedback loop where mentees also enrich mentors' development.</p>
+          </div>
+        </div>
+        <div class="doc-tier">
+          <span class="doc-tier-num">3</span>
+          <div>
+            <p class="doc-tier-title">Low cost, low commitment, high scalability for Rotary</p>
+            <p class="doc-tier-desc">Given Rotary's constrained time and monetary resources, collective mentorship is efficient: fewer mentors needed, less pressure on individuals, and greater reach. It's affinity-based — women are matched with others who share their interests — making it naturally aligned with Rotary's existing values of diversity, equity, and inclusion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── IMPLEMENTATION ── -->
+    <div class="doc-section si" id="implementation">
+      <span class="doc-section-num">06</span>
+      <h2 class="doc-section-title">Implementation Plan</h2>
+      <p class="doc-p">Engagement and retention depend on programme quality at every stage (Ngozi &amp; Edwinah, 2022). The implementation plan runs across five sequential stages — designed to be piloted at the chapter level without requiring top-down organisational mandate.</p>
+
+      <div class="doc-impl">
+        <div class="doc-impl-row doc-impl-header">
+          <div class="doc-impl-cell">Stage</div>
+          <div class="doc-impl-cell">Actions &amp; Strategies</div>
+          <div class="doc-impl-cell">Timeline</div>
+        </div>
+        <div class="doc-impl-row">
+          <div class="doc-impl-cell">
+            <p class="doc-impl-stage">Creating a Structure</p>
+          </div>
+          <div class="doc-impl-cell">Design and test the programme structure before launch. Personalise materials, activities, and workshops around the needs of women participants. Without this foundation, rollout risks conflict and confusion (Corkindale, 2011).</div>
+          <div class="doc-impl-cell"><span class="doc-impl-timeline">~2 months</span></div>
+        </div>
+        <div class="doc-impl-row">
+          <div class="doc-impl-cell">
+            <p class="doc-impl-stage">Recruitment</p>
+          </div>
+          <div class="doc-impl-cell">Reach women mentors and mentees via social media, email newsletters, and in-person meetings. Cost-effective methods that can reach a large audience quickly, with attention to hard-to-reach populations (Darko et al., 2022).</div>
+          <div class="doc-impl-cell"><span class="doc-impl-timeline">~2 months</span></div>
+        </div>
+        <div class="doc-impl-row">
+          <div class="doc-impl-cell">
+            <p class="doc-impl-stage">Matching Mentors &amp; Mentees</p>
+          </div>
+          <div class="doc-impl-cell">Use compatibility surveys and focus groups (Kano, 1984) to match by professional interest and personality. Mentors must develop group facilitation skills: encouraging participation, managing group dynamics, fostering cohesion, and setting group rituals (Kupersmidt et al., 2020).</div>
+          <div class="doc-impl-cell"><span class="doc-impl-timeline">~1 month</span></div>
+        </div>
+        <div class="doc-impl-row">
+          <div class="doc-impl-cell">
+            <p class="doc-impl-stage">Setting Objectives</p>
+          </div>
+          <div class="doc-impl-cell">Appoint experienced Rotarians to oversee the programme. Both mentors and mentees conduct individual development planning (IDP) and team goal-setting sessions. Locke's goal-setting theory (1968) grounds this: clear, challenging, committed goals improve engagement and sustain motivation.</div>
+          <div class="doc-impl-cell"><span class="doc-impl-timeline">~0.5 months</span></div>
+        </div>
+        <div class="doc-impl-row">
+          <div class="doc-impl-cell">
+            <p class="doc-impl-stage">Support &amp; Feedback</p>
+          </div>
+          <div class="doc-impl-cell">Provide ongoing support — mental health check-ins, career guidance, networking opportunities, and skill development. Continuous feedback ensures participants' voices shape the programme's evolution (Wondim et al., 2021).</div>
+          <div class="doc-impl-cell"><span class="doc-impl-timeline">Ongoing</span></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── FULL REPORT ── -->
+    <div class="doc-section si" id="report">
+      <span class="doc-section-num">07</span>
+      <h2 class="doc-section-title">Full Report</h2>
+      <p class="doc-p">The complete submitted report — click or drag the pages to flip through.</p>
+
+      <div class="flipbook-wrap">
+        <div class="flipbook-outer">
+          <p id="flipbook-loading" class="flipbook-loading">Loading report…</p>
+          <div id="flipbook"></div>
+        </div>
+        <div class="flipbook-controls">
+          <button id="flip-prev" class="flipbook-btn">← Prev</button>
+          <span id="flip-num" class="flipbook-num">—</span>
+          <button id="flip-next" class="flipbook-btn">Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <!-- ── REFLECTION ── -->
+    <div class="doc-section si" id="reflection">
+      <span class="doc-section-num">08</span>
+      <h2 class="doc-section-title">Reflection</h2>
+      <p class="doc-p">This project was my first experience working on a cross-disciplinary research team tasked with delivering an actionable recommendation to a real organisation. The complexity wasn't technical — it was human. Getting six people with different academic lenses to synthesise into a coherent proposal required constant translation, structured debate, and genuine compromise.</p>
+
+      <div class="doc-reflections">
+        <div class="doc-reflection">
+          <span class="doc-reflection-bullet"></span>
+          <p class="doc-reflection-text">My background in science — where deadlines, collaborative analysis, and evidence-based decision-making are baseline expectations — turned out to be directly transferable to this kind of research consulting work. The discipline of "cite the claim, design the test" maps surprisingly well onto strategy.</p>
+        </div>
+        <div class="doc-reflection">
+          <span class="doc-reflection-bullet"></span>
+          <p class="doc-reflection-text">The most revealing part of the research was understanding how deeply structural the problem is. Rotary doesn't have a brand awareness problem with young women — it has a cultural experience problem. Awareness campaigns won't fix what the room communicates when you walk in.</p>
+        </div>
+        <div class="doc-reflection">
+          <span class="doc-reflection-bullet"></span>
+          <p class="doc-reflection-text">The collective mentorship framework works because it doesn't ask Rotary to rebuild from scratch — it gives chapters a modular tool they can adopt at their own pace. Feasibility matters. A theoretically optimal solution that organisations can't actually implement is just another unread report.</p>
+        </div>
+        <div class="doc-reflection">
+          <span class="doc-reflection-bullet"></span>
+          <p class="doc-reflection-text">If I were to extend this project, I'd push to pilot Tier 1 (recruitment + matching) in two or three willing chapters, then measure 12-month retention against a baseline. That's the data Rotary International actually needs to commit to broader roll-out.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.doc-main -->
+</div><!-- /.page-wrap -->
+</main>
+
+<footer class="mini-footer">
+  <span>© 2026 Stephanie Widjaja</span>
+  <a href="index.html#work">← Back to Work</a>
+</footer>
+
+<script>
+(function () {
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  function update() { nav.classList.toggle('is-scrolled', window.scrollY > 24); ticking = false; }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+})();
+
+(function () {
+  var items = Array.from(document.querySelectorAll('.si'));
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  items.forEach(function (el, i) {
+    if (i < 4) { setTimeout(function () { el.classList.add('on'); }, 60 + i * 100); }
+    else { io.observe(el); }
+  });
+})();
+
+(function () {
+  var sections = Array.from(document.querySelectorAll('.doc-section[id]'));
+  var links = Array.from(document.querySelectorAll('.doc-toc a'));
+  var ticking = false;
+
+  function updateActive() {
+    var scrollY = window.scrollY + 120;
+    var current = sections[0] ? sections[0].id : '';
+    sections.forEach(function (s) {
+      if (scrollY >= s.offsetTop) current = s.id;
+    });
+    links.forEach(function (a) {
+      a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(updateActive); ticking = true; }
+  }, { passive: true });
+
+  updateActive();
+})();
+
+(function () {
+  function loadScript(src, cb) {
+    var s = document.createElement('script'); s.src = src; s.onload = cb; document.head.appendChild(s);
+  }
+
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js', function () {
+    loadScript('https://cdn.jsdelivr.net/npm/page-flip@1.0.8/dist/js/page-flip.browser.js', function () {
+      initFlipbook();
+    });
+  });
+
+  async function initFlipbook() {
+    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    var loadingEl = document.getElementById('flipbook-loading');
+    var flipEl    = document.getElementById('flipbook');
+    var numEl     = document.getElementById('flip-num');
+
+    try {
+      var pdf = await pdfjsLib.getDocument('rotary%20/Rotary%20Final%20Report.pdf').promise;
+      var n   = pdf.numPages;
+
+      /* compute page dimensions to fit the container (two pages side by side) */
+      var page1  = await pdf.getPage(1);
+      var vp0    = page1.getViewport({ scale: 1 });
+      var avail  = Math.min(flipEl.parentElement.clientWidth - 48, 680);
+      var scale  = (avail / 2) / vp0.width;
+      var pw     = Math.floor(vp0.width  * scale);
+      var ph     = Math.floor(vp0.height * scale);
+
+      /* render all pages */
+      var images = [];
+      for (var i = 1; i <= n; i++) {
+        loadingEl.textContent = 'Rendering page ' + i + ' of ' + n + '…';
+        var page = await pdf.getPage(i);
+        var vp   = page.getViewport({ scale: scale });
+        var cv   = document.createElement('canvas');
+        cv.width = pw; cv.height = ph;
+        await page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
+        images.push(cv.toDataURL('image/jpeg', 0.88));
+      }
+
+      loadingEl.style.display = 'none';
+      flipEl.style.cssText = 'display:block; width:' + (pw * 2) + 'px; height:' + ph + 'px;';
+
+      var pf = new St.PageFlip(flipEl, {
+        width: pw, height: ph,
+        size: 'fixed',
+        showCover: false,
+        mobileScrollSupport: false,
+        flippingTime: 550,
+        usePortrait: false,
+      });
+
+      pf.loadFromImages(images);
+      numEl.textContent = '1–2 / ' + n;
+
+      pf.on('flip', function (e) {
+        var cur = e.data + 1;
+        numEl.textContent = cur + (cur < n ? '–' + (cur + 1) : '') + ' / ' + n;
+      });
+
+      document.getElementById('flip-prev').addEventListener('click', function () { pf.flipPrev(); });
+      document.getElementById('flip-next').addEventListener('click', function () { pf.flipNext(); });
+
+    } catch (err) {
+      loadingEl.textContent = 'Could not load PDF — ensure the file is accessible from a web server.';
+      console.error(err);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

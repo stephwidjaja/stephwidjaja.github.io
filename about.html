@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Stephanie Widjaja</title>
+<meta name="description" content="About Stephanie Widjaja — globally minded marketer, brand strategist, and storyteller.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: 'Cavalhatriz';
+  src: url('Cavalhatriz/Cavalhatriz.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Garet';
+  src: url('Garet-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+:root {
+  --bg:        #FAFAF8;
+  --ink:       #1B1713;
+  --accent:    #1A65FF;
+  --muted:     #8C8076;
+  --border:    rgba(27,23,19,0.11);
+  --max:       1120px;
+  --gutter:    clamp(1.25rem, 5vw, 4.5rem);
+  --section-v: clamp(5.5rem, 10vw, 10rem);
+}
+
+
+/* ─── Stagger entrance ───────────────────────────────────────────────── */
+.si {
+  opacity: 0;
+  translate: 0 55px;
+  transition: opacity 0.6s cubic-bezier(0.34,1.56,0.64,1),
+              translate 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+.si.on { opacity: 1; translate: 0 0; }
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, auto;
+}
+a, button, [role="button"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, pointer;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 { font-family: 'Instrument Serif', serif; line-height: 1.05; font-weight: 400; }
+em { font-style: italic; }
+a  { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ── NAV ── */
+#nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: auto;
+  max-width: calc(100vw - 2rem);
+}
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  background: rgba(250,250,248,0.55);
+  backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-bottom-color: rgba(27,23,19,0.08);
+  border-radius: 999px;
+  padding: 0.7rem 2rem;
+  box-shadow: 0 2px 16px rgba(27,23,19,0.07), inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: box-shadow 0.35s, background 0.35s;
+}
+#nav.is-scrolled .nav-pill {
+  background: rgba(250,250,248,0.72);
+  box-shadow: 0 4px 28px rgba(27,23,19,0.11), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.nav-mark {
+  font-family: 'Cavalhatriz', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  color: var(--ink);
+  padding: 0 0.2rem;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex: 1;
+}
+.nav-links:first-child { justify-content: flex-end; }
+.nav-links:last-child  { justify-content: flex-start; }
+.nav-links a {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 1.05rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ── ABOUT HERO ── */
+.about-hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 5rem;
+}
+
+.about-composition {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-photo {
+  width: clamp(150px, 18vw, 260px);
+  display: block;
+  position: relative;
+  z-index: 2;
+  border: 10px solid #fff;
+  outline: 1px solid rgba(27,23,19,0.12);
+  box-shadow: 0 20px 60px rgba(27,23,19,0.35), 0 6px 16px rgba(27,23,19,0.2);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Note image */
+.about-note {
+  position: absolute;
+  left: -12%;
+  top: -5%;
+  width: clamp(220px, 28vw, 340px);
+  z-index: 10;
+  transform: rotate(-3deg);
+  filter: drop-shadow(2px 4px 14px rgba(27,23,19,0.18));
+}
+.about-note img {
+  width: 100%;
+  display: block;
+}
+
+/* ── QUICK FACTS ── */
+#about {
+  padding-top: 0;
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.facts-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #2a2a2a;
+  margin-bottom: 0.75rem;
+  margin-top: -1.5rem;
+}
+
+.facts-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.fact {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.fact:first-child {
+  border-top: 1px solid var(--border);
+}
+.fact-k {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+.fact-v {
+  font-family: 'Garet', sans-serif;
+  font-size: 0.88rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+footer.mini-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer.mini-footer span {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+footer.mini-footer a {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent);
+}
+footer.mini-footer a:hover { text-decoration: underline; }
+
+/* ── PHOTO STACK ── */
+.photo-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+.photo-above {
+  font-family: 'Cavalhatriz', serif;
+  font-weight: 500;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  color: var(--ink);
+  letter-spacing: 0;
+  margin-bottom: 0.5rem;
+  margin-top: -3rem;
+}
+.photo-below {
+  font-family: 'Instrument Serif', serif;
+  font-style: normal;
+  font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+  color: #2a2a2a;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+.about-bio {
+  margin-top: -5rem;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+.about-bio p {
+  font-family: 'Garet', sans-serif;
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
+  color: var(--muted);
+  text-align: left;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+.about-bio p:last-child { margin-bottom: 0; }
+
+/* ── HOBBY ICONS ── */
+.hobby-icon {
+  position: absolute;
+  font-size: 5.5rem;
+  z-index: 8000;
+  opacity: 0;
+  pointer-events: none;
+  cursor: grab;
+  user-select: none;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
+  transform: translate(-50%, -50%) scale(0);
+  will-change: transform, left, top;
+}
+.hobby-icon.floating {
+  animation: gentleFloat var(--float-dur, 3s) ease-in-out infinite;
+}
+@keyframes gentleFloat {
+  0%,100% { transform: translate(-50%,-50%) rotate(-4deg); }
+  50%     { transform: translate(-50%, calc(-50% - 10px)) rotate(4deg); }
+}
+.hobby-icon:active { cursor: grabbing; }
+
+@keyframes slowSpin {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+.hobby-icon.spinning {
+  animation: slowSpin 5s linear infinite !important;
+}
+
+@media (max-width: 768px) {
+  .about-note { left: -5%; width: clamp(180px, 55vw, 260px); }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="si" role="navigation" aria-label="Main navigation">
+  <div class="nav-pill">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#work">Work</a></li>
+    </ul>
+    <a href="index.html" class="nav-mark">SW</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO: image + note ── -->
+<div class="about-hero">
+  <div class="about-composition">
+
+    <div class="about-note si">
+      <img src="note_aboutpage.png" alt="Hobbies note">
+    </div>
+
+    <div class="photo-stack">
+      <p class="photo-above si">about me!</p>
+      <img class="about-photo si" src="about-photo.jpg" alt="Stephanie Widjaja"
+           onerror="this.style.opacity='0'">
+      <p class="photo-below si">A Graduate Student in Marketing at Boston University</p>
+    </div>
+
+    <span class="hobby-icon hi-1">🌸</span>
+    <span class="hobby-icon hi-2">🧋</span>
+    <span class="hobby-icon hi-3">✈️</span>
+    <span class="hobby-icon hi-4">📸</span>
+    <span class="hobby-icon hi-5">🧩</span>
+
+  </div>
+
+  </div>
+</div>
+
+<!-- ── BIO ── -->
+<div class="about-bio wrap si">
+  <p>Raised across Jakarta, Singapore, Taiwan, and Sydney before landing in Boston, I've spent my life navigating cultural contexts that most people only read about. That background isn't incidental to my marketing work — it's the foundation of it. I understand intuitively how culture shapes the way a message is received, and I build every campaign, brief, and piece of copy with that in mind.</p>
+  <p>My path into marketing runs through an unlikely place: food science. Studying nutrition and food product development at the University of Sydney gave me a rigor and a consumer-first perspective that I carry into everything I do. When I analyze a brief, I'm asking the same questions I'd ask in a lab — what do we actually know, what are we assuming, and what would it take to prove it?</p>
+  <p>I'm drawn to purpose-driven organizations: emerging companies, social ventures, and initiatives where thoughtful marketing can help a genuinely good idea gain traction and long-term sustainability. If your work is trying to connect with people in a real way, I'd like to help.</p>
+</div>
+
+<!-- ── QUICK FACTS ── -->
+<section id="about" class="si">
+  <div class="wrap">
+    <p class="facts-title">Facts</p>
+    <div class="facts-grid">
+      <div class="fact">
+        <span class="fact-k">Based in</span>
+        <span class="fact-v">Boston, MA</span>
+      </div>
+      <div class="fact">
+        <span class="fact-k">Education</span>
+        <span class="fact-v">M.Sc. Global Marketing Management, Boston University<br>B.Sc. Food Science &amp; Nutrition, University of Sydney</span>
+      </div>
+      <div class="fact">
+        <span class="fact-k">Languages</span>
+        <span class="fact-v">English · Indonesian · Mandarin · Spanish</span>
+      </div>
+      <div class="fact">
+        <span class="fact-k">Open to</span>
+        <span class="fact-v">Full-time (May 2026)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="mini-footer">
+  <span>© 2026 Stephanie Widjaja</span>
+  <a href="index.html">← Back to home</a>
+</footer>
+
+<script>
+// ── All emoji behaviour ──────────────────────────────────────────────────
+(function () {
+  const photo       = document.querySelector('.about-photo');
+  const icons       = Array.from(document.querySelectorAll('.hobby-icon'));
+  const factsSection= document.getElementById('about');
+  if (!photo || !icons.length) return;
+
+  let triggered  = false;
+  let factsDone  = false;
+  let isTrailing = false;
+  let mouseHist  = [];
+  let rafId      = null;
+
+  const spots = [
+    { x: 10, y: 18, dur: '3.2s' },
+    { x: 78, y: 12, dur: '2.8s' },
+    { x: 82, y: 55, dur: '3.5s' },
+    { x: 68, y: 78, dur: '3s'   },
+    { x: 14, y: 72, dur: '2.6s' },
+  ];
+
+  // Track mouse for trailing
+  document.addEventListener('mousemove', function (e) {
+    if (!isTrailing) return;
+    mouseHist.unshift({ x: e.clientX + window.scrollX, y: e.clientY + window.scrollY });
+    if (mouseHist.length > 80) mouseHist.pop();
+  });
+
+  function makeDraggable(el) {
+    el.addEventListener('mousedown', function (e) {
+      if (isTrailing) return;
+      e.preventDefault();
+      const wasSpinning = el.classList.contains('spinning');
+      el.classList.remove('floating', 'spinning');
+      el.style.cursor = 'grabbing';
+      const ox = e.clientX - parseFloat(el.style.left);
+      const oy = e.clientY - parseFloat(el.style.top);
+      function onMove(e) {
+        el.style.left = (e.clientX - ox) + 'px';
+        el.style.top  = (e.clientY - oy) + 'px';
+      }
+      function onUp() {
+        el.style.cursor = 'grab';
+        el.classList.add(wasSpinning ? 'spinning' : 'floating');
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+      }
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+  }
+
+  function popIcons() {
+    isTrailing = false;
+    factsDone  = false;
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    mouseHist  = [];
+
+    const rect = photo.getBoundingClientRect();
+    const cy   = rect.top + rect.height / 2 + window.scrollY;
+
+    icons.forEach(function (icon) {
+      icon.classList.remove('floating', 'spinning');
+      icon.style.transition = 'left 0.4s ease, top 0.4s ease, font-size 0.4s ease, opacity 0.3s';
+      icon.style.fontSize   = '5.5rem';
+      icon.style.left       = (rect.left + rect.width / 2) + 'px';
+      icon.style.top        = cy + 'px';
+    });
+
+    setTimeout(function () {
+      icons.forEach(function (icon, i) {
+        const s = spots[i];
+        setTimeout(function () {
+          icon.style.transition = 'left 0.6s cubic-bezier(0.34,1.56,0.64,1), top 0.6s cubic-bezier(0.34,1.56,0.64,1), transform 0.6s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s';
+          icon.style.left      = (s.x / 100 * window.innerWidth) + 'px';
+          icon.style.top       = (s.y / 100 * window.innerHeight + window.scrollY) + 'px';
+          icon.style.transform = 'translate(-50%,-50%) scale(1) rotate(360deg)';
+          icon.style.opacity   = '1';
+          setTimeout(function () {
+            icon.style.transition = '';
+            icon.style.transform  = 'translate(-50%,-50%) rotate(0deg)';
+            icon.classList.add('floating');
+          }, 700);
+        }, i * 90);
+      });
+    }, 450);
+  }
+
+  function startTrailing() {
+    if (isTrailing) return;
+    isTrailing = true;
+    mouseHist  = [];
+    icons.forEach(function (ic) {
+      ic.classList.remove('spinning', 'floating');
+      ic.style.transition = 'font-size 0.4s ease';
+      ic.style.fontSize   = '2.4rem';
+      setTimeout(function () { ic.style.transition = ''; }, 450);
+    });
+
+    function tick() {
+      if (!isTrailing) return;
+      icons.forEach(function (ic, i) {
+        const pos = mouseHist[Math.min(i * 12, mouseHist.length - 1)];
+        if (pos) { ic.style.left = pos.x + 'px'; ic.style.top = pos.y + 'px'; }
+      });
+      rafId = requestAnimationFrame(tick);
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // Photo hover → first pop; click → re-pop any time
+  photo.addEventListener('mouseenter', function () {
+    if (triggered) return;
+    triggered = true;
+    const rect = photo.getBoundingClientRect();
+    const cy   = rect.top + rect.height / 2 + window.scrollY;
+    icons.forEach(function (icon) {
+      document.body.appendChild(icon);
+      icon.style.left = (rect.left + rect.width / 2) + 'px';
+      icon.style.top  = cy + 'px';
+      icon.style.pointerEvents = 'auto';
+      makeDraggable(icon);
+      icon.style.setProperty('--float-dur', spots[Array.from(document.querySelectorAll('.hobby-icon')).indexOf(icon)] ? spots[icons.indexOf(icon)].dur : '3s');
+    });
+    icons.forEach(function (icon, i) {
+      icon.style.setProperty('--float-dur', spots[i].dur);
+      setTimeout(function () {
+        icon.style.transition = 'left 0.6s cubic-bezier(0.34,1.56,0.64,1), top 0.6s cubic-bezier(0.34,1.56,0.64,1), transform 0.6s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s';
+        icon.style.left      = (spots[i].x / 100 * window.innerWidth) + 'px';
+        icon.style.top       = (spots[i].y / 100 * window.innerHeight + window.scrollY) + 'px';
+        icon.style.transform = 'translate(-50%,-50%) scale(1) rotate(360deg)';
+        icon.style.opacity   = '1';
+        setTimeout(function () {
+          icon.style.transition = '';
+          icon.style.transform  = 'translate(-50%,-50%) rotate(0deg)';
+          icon.classList.add('floating');
+        }, 700);
+      }, i * 90);
+    });
+  });
+
+  // Nav hover while trailing → park 2 left, 3 right; leave → resume trail
+  const navPill = document.querySelector('.nav-pill');
+  if (navPill) {
+    let navParked = false;
+
+    navPill.addEventListener('mouseenter', function () {
+      if (!isTrailing) return;
+      navParked = true;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+
+      const rect = navPill.getBoundingClientRect();
+      const midY = rect.top + window.scrollY + rect.height / 2;
+      const gap  = 44;
+
+      // 2 left, 3 right
+      const positions = [
+        rect.left  - 20,
+        rect.left  - 20 - gap,
+        rect.right + 20,
+        rect.right + 20 + gap,
+        rect.right + 20 + gap * 2,
+      ];
+
+      icons.forEach(function (icon, i) {
+        icon.style.transition = 'left 0.5s cubic-bezier(0.34,1.56,0.64,1), top 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        icon.style.left = positions[i] + 'px';
+        icon.style.top  = midY + 'px';
+        setTimeout(function () { icon.style.transition = ''; }, 550);
+      });
+    });
+
+    navPill.addEventListener('mouseleave', function () {
+      if (!isTrailing || !navParked) return;
+      navParked = false;
+      mouseHist = [];
+      function tick() {
+        if (!isTrailing) return;
+        icons.forEach(function (ic, i) {
+          const pos = mouseHist[Math.min(i * 12, mouseHist.length - 1)];
+          if (pos) { ic.style.left = pos.x + 'px'; ic.style.top = pos.y + 'px'; }
+        });
+        rafId = requestAnimationFrame(tick);
+      }
+      rafId = requestAnimationFrame(tick);
+    });
+  }
+
+  // Scroll back to hero while trailing → re-pop
+  const heroSection = document.querySelector('.about-hero');
+  if (heroSection) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && isTrailing) popIcons();
+      });
+    }, { threshold: 0.4 }).observe(heroSection);
+  }
+
+  // Facts section in view → start trailing cursor
+  if (factsSection) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || factsDone) return;
+        const visible = icons.filter(function (ic) { return parseFloat(ic.style.opacity) > 0; });
+        if (!visible.length) return;
+        factsDone = true;
+        startTrailing();
+      });
+    }, { threshold: 0.4 }).observe(factsSection);
+  }
+
+})();
+
+(function () {
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  function updateNav() {
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+  }, { passive: true });
+})();
+
+// Stagger entrance
+(function () {
+  var items = Array.from(document.querySelectorAll('.si'));
+  items.forEach(function (el, i) {
+    setTimeout(function () { el.classList.add('on'); }, 60 + i * 110);
+  });
+})();
+
+</script>
+
+</body>
+</html>

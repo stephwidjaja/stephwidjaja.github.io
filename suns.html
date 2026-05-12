@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sydney University Nutrition Society — Stephanie Widjaja</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: 'Cavalhatriz';
+  src: url('Cavalhatriz/Cavalhatriz.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Garet';
+  src: url('Garet-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Garet';
+  src: url('Garet-Heavy.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+.si {
+  opacity: 0;
+  translate: 0 40px;
+  transition: opacity 0.6s cubic-bezier(0.34,1.56,0.64,1),
+              translate 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+.si.on { opacity: 1; translate: 0 0; }
+
+:root {
+  --bg:      #FAFAF8;
+  --ink:     #1B1713;
+  --accent:  #1A65FF;
+  --muted:   #8C8076;
+  --border:  rgba(27,23,19,0.11);
+  --max:     1060px;
+  --gutter:  clamp(1.25rem, 5vw, 4.5rem);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, auto;
+}
+a, button, [role="button"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 19.5,12.5 30,12.5 21.5,19 24.5,29.5 16,23 7.5,29.5 10.5,19 2,12.5 12.5,12.5' fill='%23FF3FA4' stroke='%23FF3FA4' stroke-width='1'/%3E%3C/svg%3E") 16 16, pointer;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ── NAV ── */
+#nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: auto;
+  max-width: calc(100vw - 2rem);
+}
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  background: rgba(250,250,248,0.55);
+  backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8) brightness(1.05);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-bottom-color: rgba(27,23,19,0.08);
+  border-radius: 999px;
+  padding: 0.7rem 2rem;
+  box-shadow: 0 2px 16px rgba(27,23,19,0.07), inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: box-shadow 0.35s, background 0.35s;
+}
+#nav.is-scrolled .nav-pill {
+  background: rgba(250,250,248,0.72);
+  box-shadow: 0 4px 28px rgba(27,23,19,0.11), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.nav-mark {
+  font-family: 'Cavalhatriz', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: var(--ink);
+  padding: 0 0.2rem;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex: 1;
+}
+.nav-links:first-child { justify-content: flex-end; }
+.nav-links:last-child  { justify-content: flex-start; }
+.nav-links a {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 1.05rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+/* ── CASE STUDY HERO ── */
+.cs-header {
+  padding: clamp(8rem, 14vw, 12rem) var(--gutter) clamp(3rem, 6vw, 5rem);
+  max-width: var(--max);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3rem;
+  transition: color 0.2s;
+}
+.cs-back:hover { color: var(--accent); }
+.cs-back::before { content: '←'; font-size: 0.9rem; }
+
+.cs-eyebrow {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+.cs-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.cs-intro {
+  font-family: 'Garet', sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  color: #3C3830;
+  max-width: 56ch;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+.cs-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+.cs-meta-label {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.cs-meta-value {
+  font-family: 'Garet', sans-serif;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+/* ── STATS BAR ── */
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  background: var(--border);
+  gap: 1px;
+  margin: clamp(3rem, 5vw, 4.5rem) 0;
+}
+.cs-stat {
+  background: var(--bg);
+  padding: 1.4rem 1.75rem;
+}
+.cs-stat-n {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  color: var(--accent);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.cs-stat-l {
+  font-family: 'Instrument Serif', serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ── GALLERY ── */
+.cs-gallery { margin-top: 2rem; }
+.cs-gallery-label {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.9rem;
+}
+.cs-gallery-section-label {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2rem 0 0.9rem;
+}
+
+/* Hero wide */
+.cs-gitem-hero { margin-bottom: 0.55rem; }
+
+/* 3-col grid */
+.cs-gitem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+
+/* Individual gallery item */
+.cs-gitem {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: rgba(27,23,19,0.05);
+}
+.cs-gitem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+.cs-gitem:hover img { transform: scale(1.04); }
+
+/* Hover overlay */
+.cs-gitem-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,7,5,0.94) 0%,
+    rgba(10,7,5,0.72) 45%,
+    rgba(10,7,5,0.1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.1rem 1.2rem;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.cs-gitem:hover .cs-gitem-overlay { opacity: 1; }
+
+.cs-gitem-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(0.88rem, 1.4vw, 1.05rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.22rem;
+}
+.cs-gitem-info {
+  font-family: 'Garet', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.6;
+}
+
+/* Aspect ratios */
+.cs-gitem--square   { aspect-ratio: 1; }
+.cs-gitem--portrait { aspect-ratio: 3/4; }
+.cs-gitem--hero-img { aspect-ratio: 16/9; }
+.cs-gitem--hero-img img { object-position: top; }
+
+/* ── FOOTER ── */
+footer.mini-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer.mini-footer span {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+footer.mini-footer a {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent);
+}
+footer.mini-footer a:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .cs-gitem-hero-pair { grid-template-columns: 1fr; }
+  .cs-gitem-grid { grid-template-columns: repeat(2, 1fr); }
+  .cs-stats { grid-template-columns: 1fr 1fr; }
+  .cs-meta-row { gap: 1.5rem; }
+}
+@media (max-width: 420px) {
+  .cs-gitem-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .nav-links { display: none; }
+  .cs-stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="si" role="navigation" aria-label="Main navigation">
+  <div class="nav-pill">
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#work" class="active">Work</a></li>
+    </ul>
+    <a href="index.html" class="nav-mark">SW</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── HEADER ── -->
+  <header class="cs-header si">
+    <a href="index.html#work" class="cs-back">Back to Work</a>
+    <p class="cs-eyebrow">Social &amp; Events · Graphic Design</p>
+    <h1 class="cs-title">Sydney University<br>Nutrition Society</h1>
+    <p class="cs-intro">
+      As Marketing Officer for SUNS, I designed event campaigns, built cross-club
+      collaborations, and developed a content strategy that grew the society's
+      Instagram engagement by ~30% over two years — creating visual work that made
+      nutrition feel approachable, social, and worth showing up for.
+    </p>
+    <div class="cs-meta-row">
+      <div class="cs-meta-item">
+        <p class="cs-meta-label">Role</p>
+        <p class="cs-meta-value">Marketing Officer</p>
+      </div>
+      <div class="cs-meta-item">
+        <p class="cs-meta-label">Duration</p>
+        <p class="cs-meta-value">Mar 2022 — Jun 2024</p>
+      </div>
+      <div class="cs-meta-item">
+        <p class="cs-meta-label">Location</p>
+        <p class="cs-meta-value">Sydney, Australia</p>
+      </div>
+      <div class="cs-meta-item">
+        <p class="cs-meta-label">Tools</p>
+        <p class="cs-meta-value">Canva · Instagram</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── STATS ── -->
+  <div class="wrap si">
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-n">~30%</span>
+        <span class="cs-stat-l">Engagement growth</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-n">2 yrs</span>
+        <span class="cs-stat-l">Marketing Officer</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-n">3+</span>
+        <span class="cs-stat-l">Cross-club campaigns</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GALLERY ── -->
+  <div class="wrap si">
+    <div class="cs-gallery">
+      <p class="cs-gallery-label">Design Work</p>
+
+      <!-- Hero: Instagram feed overview -->
+      <div class="cs-gitem-hero">
+        <div class="cs-gitem cs-gitem--hero-img">
+          <img src="suns/ig-overview.png" alt="SUNS Instagram — @usyd.suns">
+          <div class="cs-gitem-overlay">
+            <p class="cs-gitem-name">@usyd.suns</p>
+            <p class="cs-gitem-info">Grew the SUNS Instagram to 1,000+ followers over two years as Marketing Officer — building a content strategy that increased engagement ~30% through event-led campaigns, cross-club collabs, and consistent visual identity.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-col design grid -->
+      <div class="cs-gitem-grid">
+
+        <div class="cs-gitem cs-gitem--portrait">
+          <img src="suns/oweek-1.png" alt="SUNS O-Week Welcome poster">
+          <div class="cs-gitem-overlay">
+            <p class="cs-gitem-name">O-Week Welcome</p>
+            <p class="cs-gitem-info">Recruitment poster for Orientation Week — illustrated alphabet soup bowl with the tagline "We Just Need Nutrition Society." Warm, approachable, and immediately legible as food-culture branding.</p>
+          </div>
+        </div>
+
+        <div class="cs-gitem cs-gitem--portrait">
+          <img src="suns/bowling.png" alt="Let's Go Bowling event poster">
+          <div class="cs-gitem-overlay">
+            <p class="cs-gitem-name">Let's Go Bowling</p>
+            <p class="cs-gitem-info">Event poster for a members' social at Strike Bowling, Darling Harbour. Bold yellow with a retro sports-diner aesthetic — high energy, easy to read, designed to drive sign-ups.</p>
+          </div>
+        </div>
+
+        <div class="cs-gitem cs-gitem--portrait">
+          <img src="suns/yoga.png" alt="Let's Do Some Yoga event poster">
+          <div class="cs-gitem-overlay">
+            <p class="cs-gitem-name">Let's Do Some Yoga</p>
+            <p class="cs-gitem-info">Event poster for a SUNS × USU wellness session at Teachers College. Illustrated YOGA typography with illustrated figures — earthy, wellness-forward design that extended the SUNS brand beyond nutrition content.</p>
+          </div>
+        </div>
+
+        <div class="cs-gitem cs-gitem--portrait">
+          <img src="suns/barbell-1.png" alt="From Barbell to Plate event poster">
+          <div class="cs-gitem-overlay">
+            <p class="cs-gitem-name">From Barbell to Plate</p>
+            <p class="cs-gitem-info">Co-designed with BarbellSoc for a joint event on meal planning for lifters. Illustrated athlete, bold orange type, clean cream background — bridged both clubs' audiences through a shared visual identity.</p>
+          </div>
+        </div>
+
+        <div class="cs-gitem cs-gitem--portrait">
+          <img src="suns/barbell-2.png" alt="From Barbell to Plate — detail">
+          <div class="cs-gitem-overlay">
+            <p class="cs-gitem-name">From Barbell to Plate — Detail</p>
+            <p class="cs-gitem-info">Secondary graphic for the collab — minimalist barbell illustration with circular text highlighting three event pillars: roast meal plans, intro to weightlifting, and access to a professional dietitian.</p>
+          </div>
+        </div>
+
+        <div class="cs-gitem cs-gitem--portrait">
+          <img src="suns/agm-announce.png" alt="AGM 2023 announcement">
+          <div class="cs-gitem-overlay">
+            <p class="cs-gitem-name">AGM '23</p>
+            <p class="cs-gitem-info">"GM '23" rendered as an editorial lockup against a warm sunburst — opening post in a recruitment campaign to fill exec positions and drive Zoom attendance for the Annual General Meeting.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="height: clamp(4rem, 8vw, 6rem);"></div>
+
+</main>
+
+<footer class="mini-footer">
+  <span>© 2026 Stephanie Widjaja</span>
+  <a href="index.html#work">← Back to Work</a>
+</footer>
+
+<script>
+(function () {
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  function updateNav() {
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+  }, { passive: true });
+})();
+
+(function () {
+  var items = Array.from(document.querySelectorAll('.si'));
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('on');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  items.forEach(function (el, i) {
+    if (i < 3) {
+      setTimeout(function () { el.classList.add('on'); }, 60 + i * 110);
+    } else {
+      observer.observe(el);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
