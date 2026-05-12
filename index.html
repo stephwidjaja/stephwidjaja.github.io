@@ -2760,7 +2760,10 @@ a  { color: inherit; text-decoration: none; }
       if (!pImg) return;
       var pIdx = 1;
       var off = offset || 0;
-      function fmt(n) { return pad ? (n < 10 ? '0' + n : '' + n) : '' + n; }
+      function fmt(n) {
+        if (typeof pad === 'number') { var s = '' + n; while (s.length < pad) s = '0' + s; return s; }
+        return pad ? (n < 10 ? '0' + n : '' + n) : '' + n;
+      }
       function pGoTo(n) {
         pIdx = Math.min(Math.max(n, 1), total);
         pImg.src = base + fmt(pIdx + off) + '.png';
@@ -2774,7 +2777,7 @@ a  { color: inherit; text-decoration: none; }
     initProjectSlides('hite', 'hite%20kwang%20jang/page-', 18, true);
     initProjectSlides('ba', 'british%20airways/page-', 13, true);
     initProjectSlides('hf', 'hunger%20fighters/page-', 20, true);
-    initProjectSlides('fw', 'fuelwise/slide-', 27, true, 2);
+    initProjectSlides('fw', 'fuelwise/slide-', 27, 3, 2);
   }
 
   function closeOverlay() {
