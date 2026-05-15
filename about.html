@@ -279,7 +279,7 @@ footer.mini-footer a:hover { text-decoration: underline; }
   margin-top: 2.5rem;
 }
 .about-bio {
-  margin-top: -5rem;
+  margin-top: 2rem;
   padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 .about-bio p {
@@ -323,7 +323,43 @@ footer.mini-footer a:hover { text-decoration: underline; }
 }
 
 @media (max-width: 768px) {
-  .about-note { left: -5%; width: clamp(180px, 55vw, 260px); }
+  /* Nav */
+  .nav-pill { gap: 1.2rem; padding: 0.6rem 1.2rem; }
+  .nav-links { gap: 0.9rem; }
+  .nav-links a { font-size: 0.85rem; letter-spacing: 0.06em; }
+
+  /* Hero */
+  .about-hero { padding-top: 6rem; padding-bottom: 2rem; min-height: auto; }
+  .about-note { left: -5%; width: clamp(160px, 48vw, 240px); top: -2%; }
+  .about-photo { width: clamp(160px, 46vw, 220px); border-width: 7px; }
+  .photo-above { font-size: clamp(2.2rem, 9vw, 3.2rem); margin-top: -1rem; }
+  .photo-below { font-size: clamp(1rem, 4vw, 1.4rem); margin-top: 1.5rem; }
+
+  /* Bio */
+  .about-bio { margin-top: 1.5rem; }
+  .about-bio p { font-size: 0.85rem; line-height: 1.8; }
+
+  /* Facts */
+  .fact { flex-direction: column; gap: 0.25rem; }
+  .fact-k { min-width: auto; }
+  .facts-title { margin-top: 0; }
+}
+
+@media (max-width: 480px) {
+  /* Nav: compact for very small screens */
+  .nav-pill { gap: 0.7rem; padding: 0.55rem 0.9rem; }
+  .nav-links { gap: 0.6rem; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 0.04em; }
+  .nav-mark { font-size: 1.2rem; }
+
+  /* Hero: hide note so it doesn't clip off-screen */
+  .about-note { display: none; }
+  .about-photo { width: clamp(160px, 58vw, 200px); }
+  .photo-above { font-size: clamp(2rem, 10vw, 2.8rem); }
+  .photo-below { font-size: 1rem; }
+
+  /* Footer */
+  footer.mini-footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 </style>
 </head>
