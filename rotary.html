@@ -369,26 +369,20 @@ footer.mini-footer span { font-family: 'Inter Tight', sans-serif; font-size: 0.8
 footer.mini-footer a { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1rem; color: var(--accent); }
 footer.mini-footer a:hover { text-decoration: underline; }
 
-/* ── FLIPBOOK ── */
-.flipbook-wrap { margin-top: 1.75rem; }
-.flipbook-outer {
+/* ── REPORT SLIDESHOW ── */
+.report-slides { margin-top: 1.75rem; }
+.report-slides-track {
   background: #e8e4de;
   border-radius: 12px;
-  padding: 1.5rem;
-  display: flex; justify-content: center; align-items: center;
-  min-height: 180px;
   border: 1px solid var(--border);
   overflow: hidden;
-  position: relative;
 }
-.flipbook-loading {
-  font-family: 'Garet', sans-serif; font-size: 0.84rem; color: var(--muted); text-align: center;
+.report-slides-track img { width: 100%; display: block; }
+.report-slides-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 0.75rem; gap: 0.5rem;
 }
-#flipbook { display: none; }
-.flipbook-controls {
-  display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 1rem;
-}
-.flipbook-btn {
+.report-slides-btn {
   font-family: 'Inter Tight', sans-serif; font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--muted); background: none;
@@ -396,8 +390,8 @@ footer.mini-footer a:hover { text-decoration: underline; }
   padding: 0.4rem 1.1rem;
   transition: color 0.2s, border-color 0.2s;
 }
-.flipbook-btn:hover { color: var(--ink); border-color: rgba(27,23,19,0.35); }
-.flipbook-num { font-family: 'Garet', sans-serif; font-size: 0.8rem; color: var(--muted); min-width: 80px; text-align: center; }
+.report-slides-btn:hover { color: var(--ink); border-color: rgba(27,23,19,0.35); }
+.report-slides-counter { font-family: 'Garet', sans-serif; font-size: 0.8rem; color: var(--muted); flex: 1; text-align: center; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 760px) {
@@ -747,15 +741,14 @@ footer.mini-footer a:hover { text-decoration: underline; }
       <h2 class="doc-section-title">Full Report</h2>
       <p class="doc-p">The complete submitted report — click or drag the pages to flip through.</p>
 
-      <div class="flipbook-wrap">
-        <div class="flipbook-outer">
-          <p id="flipbook-loading" class="flipbook-loading">Loading report…</p>
-          <div id="flipbook"></div>
+      <div class="report-slides">
+        <div class="report-slides-track">
+          <img id="rotary-report-img" src="rotary/page-01.png" alt="Report page 1 of 21">
         </div>
-        <div class="flipbook-controls">
-          <button id="flip-prev" class="flipbook-btn">← Prev</button>
-          <span id="flip-num" class="flipbook-num">—</span>
-          <button id="flip-next" class="flipbook-btn">Next →</button>
+        <div class="report-slides-nav">
+          <button id="rotary-report-prev" class="report-slides-btn">← Prev</button>
+          <span class="report-slides-counter"><span id="rotary-report-cur">1</span> / 21</span>
+          <button id="rotary-report-next" class="report-slides-btn">Next →</button>
         </div>
       </div>
     </div>
@@ -843,76 +836,22 @@ footer.mini-footer a:hover { text-decoration: underline; }
 })();
 
 (function () {
-  function loadScript(src, cb) {
-    var s = document.createElement('script'); s.src = src; s.onload = cb; document.head.appendChild(s);
+  var img   = document.getElementById('rotary-report-img');
+  var cur   = document.getElementById('rotary-report-cur');
+  var prev  = document.getElementById('rotary-report-prev');
+  var next  = document.getElementById('rotary-report-next');
+  if (!img || !prev || !next) return;
+  var total = 21;
+  var idx   = 1;
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function goTo(n) {
+    idx = (n < 1) ? total : (n > total) ? 1 : n;
+    img.src = 'rotary/page-' + pad(idx) + '.png';
+    img.alt = 'Report page ' + idx + ' of ' + total;
+    cur.textContent = idx;
   }
-
-  loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js', function () {
-    loadScript('https://cdn.jsdelivr.net/npm/page-flip@1.0.8/dist/js/page-flip.browser.js', function () {
-      initFlipbook();
-    });
-  });
-
-  async function initFlipbook() {
-    var pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-    var loadingEl = document.getElementById('flipbook-loading');
-    var flipEl    = document.getElementById('flipbook');
-    var numEl     = document.getElementById('flip-num');
-
-    try {
-      var pdf = await pdfjsLib.getDocument('rotary%20/Rotary%20Final%20Report.pdf').promise;
-      var n   = pdf.numPages;
-
-      /* compute page dimensions to fit the container (two pages side by side) */
-      var page1  = await pdf.getPage(1);
-      var vp0    = page1.getViewport({ scale: 1 });
-      var avail  = Math.min(flipEl.parentElement.clientWidth - 48, 680);
-      var scale  = (avail / 2) / vp0.width;
-      var pw     = Math.floor(vp0.width  * scale);
-      var ph     = Math.floor(vp0.height * scale);
-
-      /* render all pages */
-      var images = [];
-      for (var i = 1; i <= n; i++) {
-        loadingEl.textContent = 'Rendering page ' + i + ' of ' + n + '…';
-        var page = await pdf.getPage(i);
-        var vp   = page.getViewport({ scale: scale });
-        var cv   = document.createElement('canvas');
-        cv.width = pw; cv.height = ph;
-        await page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
-        images.push(cv.toDataURL('image/jpeg', 0.88));
-      }
-
-      loadingEl.style.display = 'none';
-      flipEl.style.cssText = 'display:block; width:' + (pw * 2) + 'px; height:' + ph + 'px;';
-
-      var pf = new St.PageFlip(flipEl, {
-        width: pw, height: ph,
-        size: 'fixed',
-        showCover: false,
-        mobileScrollSupport: false,
-        flippingTime: 550,
-        usePortrait: false,
-      });
-
-      pf.loadFromImages(images);
-      numEl.textContent = '1–2 / ' + n;
-
-      pf.on('flip', function (e) {
-        var cur = e.data + 1;
-        numEl.textContent = cur + (cur < n ? '–' + (cur + 1) : '') + ' / ' + n;
-      });
-
-      document.getElementById('flip-prev').addEventListener('click', function () { pf.flipPrev(); });
-      document.getElementById('flip-next').addEventListener('click', function () { pf.flipNext(); });
-
-    } catch (err) {
-      loadingEl.textContent = 'Could not load PDF — ensure the file is accessible from a web server.';
-      console.error(err);
-    }
-  }
+  prev.addEventListener('click', function () { goTo(idx - 1); });
+  next.addEventListener('click', function () { goTo(idx + 1); });
 })();
 </script>
 
